@@ -1,0 +1,21 @@
+.btn-secondary {
+    background-color: rgba(141, 52, 255, 1);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-family: Poppins;
+    border:1px solid black;
+
+  }
+
+.btn-secondary:hover{
+    background-color: rgb(108, 0, 246);
+}
+
+.form-control{
+    border:1px solid black;
+    border-radius: 5px 0px 0px 5px;
+    width: 75%;
+    font-family: Poppins;
+
+
+}
