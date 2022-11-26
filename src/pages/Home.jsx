@@ -36,9 +36,8 @@ const Home = () => {
 
         <div className="container-fluid populer">
             <div className="container py-5">
-                <h1 className='fw-semibold'>Layanan Populer</h1>
+                <h1 className='fw-semibold' style={{fontSize:"41px"}}>Layanan Populer</h1>
                 <Populer/>  
-
             </div>
 
         </div>
