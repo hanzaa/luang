@@ -10,7 +10,7 @@ const Home = () => {
         <div className='home'></div>
         <NavBar/>
         <div className="container">
-            <div className='row '>
+            <div className='row welcome '>
                 <div className='col'>
                     <div className="row slogan">
                         <h3 >Ubah waktu <span style={{color:'rgba(141, 52, 255, 1)', fontStyle:'italic'}}>luang</span> menjadi <span style={{color:'rgba(255, 0, 0, 1)'}}>uang</span></h3>
@@ -31,8 +31,16 @@ const Home = () => {
                     <img className='absolute eth' src={require("../assets/eth.png")} alt="" />
                 </div>
             </div>
-            <h1>.</h1>
-            <Populer/>  
+          
+        </div>
+
+        <div className="container-fluid populer">
+            <div className="container py-5">
+                <h1 className='fw-semibold'>Layanan Populer</h1>
+                <Populer/>  
+
+            </div>
+
         </div>
 
     </> )
