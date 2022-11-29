@@ -52,20 +52,20 @@ const Home = () => {
 
                 <div className="row pb-5">
                     <div className="col ">
-                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} width="24px" 
+                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} alt=".." width="24px" 
                         style={{display:'inline'}}/> Layanan <span style={{color:'rgba(141, 52, 255, 1)'}}>24 jam</span></h5>
                         <p>Ada pertanyaan?  tim support siklis kami  tersedia dari mana saja dan kapan saja.</p>
 
-                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} width="24px" 
+                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} alt=".." width="24px" 
                         style={{display:'inline'}}/> Kesepakatan kerja yang <span style={{color:'rgba(141, 52, 255, 1)'}}>cepat</span></h5>
                         <p>Temukan pekerja tepat yang dapat mengerjakan projekmu dengan cepat.</p>
                         
-                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} width="24px" 
+                        <h5 style={{display:'block'}}><img src={require('../assets/checkRing.png')} alt=".." width="24px" 
                         style={{display:'inline'}}/> Sesuaikan dengan <span style={{color:'rgba(141, 52, 255, 1)'}}>dana</span><span style={{color:'rgba(255, 0, 0, 1)'}}>mu</span></h5>
                         <p>Temukan harga yang sesuai dengan kualitas yang maksimal dengan skema harga proyek</p>
                     </div>
                     <div className="col-md ms-md-5">
-                        <img src={require('../assets/teamWork.png')} width='100%' ></img>
+                        <img src={require('../assets/teamWork.png')} alt=".." width='100%' ></img>
                     </div>
                 </div>
             </div>
