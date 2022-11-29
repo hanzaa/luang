@@ -79,6 +79,48 @@ h3{
     
 }
 
+.container-fluid.keynote{
+    background: #FFDADA;}
+
+.container-fluid.keynote h3{
+    font-size: 32px;
+    font-weight: 600;
+    color:black ;
+}
+.container-fluid.keynote h5{
+    font-size: 23px;
+    font-weight: 600;
+    color:black ;
+   
+}
+.container-fluid.keynote p{
+    font-size: 19px;
+    font-weight: 400;
+    padding-top: 3%;
+    padding-bottom: 3%;
+ 
+}
+
+
+.container-fluid.footer {
+    background: #EFEFEF;
+}
+.container-fluid.footer h5{
+    font-size: 18px;
+    font-weight: 600;
+    color:black ;
+    padding-top:15% ;
+    padding-bottom:5% ;
+}
+.container-fluid.footer h3{
+    font-size: 16px;
+    font-weight: 400;
+    color:black ;
+    padding-top:2% ;
+    padding-bottom:2% ;
+}
+
+
 
 
 
