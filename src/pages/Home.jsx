@@ -1,48 +1,68 @@
-import './Home.css';
-import SearcBar from '../components/SearchBar';
+import './Home.css'
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import Populer from '../components/Populer';
 
-
 const Home = () => {
-    return ( 
-        <>
-        <div className='home'></div>
-        <NavBar/>
+    return ( <>
+    <div className="home"></div>
+    <NavBar/>
+    <div className="container pb-5">
+        <div className="row py-5">
+            <div className="col-2 me-4 p-4 " style={{background:"#D9D9D9"}}>
+                <h1 className='fw-bold' style={{fontSize:"24px"}}>Hi Fais</h1>
+                <h5 className='fw-medium' style={{fontSize:"11px"}}>Cari penjual yang cocok untukmu</h5>
+                <button type="button" class="btn btn-secondary" style={{fontSize:"11px"}}>Buat Penawaran</button>
+            </div>
+            <div className="col-9 bg-danger ">
+                <h3 className='p-3 ps-5 text-white fw-normal' style={{fontSize:"20px"}}>Judul Proyek</h3>
+                <h5 className='p-1 ps-5 text-white fw-normal' style={{fontSize:"14px"}}>Carousel tentang project apa aja yang direkonendasi</h5>
+            </div>
+        </div>
+
+        <div className="row" style={{border:"solid black 1px", borderRadius:"8px"}}>
+            <h3 className='p-4 fw-normal' style={{fontSize:"20px"}}>Rekomendasi untukmu</h3>
+            <div className="py-3">
+                <Populer/>
+            </div>
+        </div>
+    </div>
+    <div className="container-fluid footer">
         <div className="container">
-            <div className='row welcome '>
-                <div className='col'>
-                    <div className="row slogan">
-                        <h3 >Ubah waktu <span style={{color:'rgba(141, 52, 255, 1)', fontStyle:'italic'}}>luang</span> menjadi <span style={{color:'rgba(255, 0, 0, 1)'}}>uang</span></h3>
-                        <h5>Temukan layanan yang sesuai dengan keperluanmu</h5>
-                    </div>
-                    <div className="row">
-                        <SearcBar/>
-                    </div>
-                    
+            <div className="row pb-5">
+                <div className="col">
+                    <h5>Kategori</h5>
+                    <h3>Grafis & Desain</h3>
+                    <h3>Digital Marketing</h3>
+                    <h3>Video & Animasi</h3>
+                    <h3>Musik & Audio</h3>
+                    <h3>Programming & Teknologi</h3>
+                    <h3>Data</h3>
+                    <h3>Bisnis</h3>
+                    <h3>Fotografi</h3>
                 </div>
-
-                <div className="col d-none d-lg-block">
-                    <img className='absolute gembok' src={require("../assets/gembok.png")} alt="" />
-                    <img className='absolute qr' src={require("../assets/qr.png")} alt="" />
-                    <img className='absolute code' src={require("../assets/code.png")} alt="" />
-                    <img className='absolute coin' src={require("../assets/coin.png")} alt="" />
-                    <img className='absolute play' src={require("../assets/play.png")} alt="" />
-                    <img className='absolute eth' src={require("../assets/eth.png")} alt="" />
+                <div className="col">
+                    <h5>Tentang</h5>
+                    <h3>Kebijakan Privasi</h3>
+                    <h3>Terms of Service</h3>
+                </div>
+                <div className="col">
+                    <h5>Dukungan</h5>
+                    <h3>Bantuan & Dukungan</h3>
+                    <h3>Kepercayaan & Keamanan</h3>
+                </div>
+                <div className="col">
+                    <h5>Komunitas</h5>
+                    <h3>Event</h3>
+                    <h3>Forum</h3>
                 </div>
             </div>
-          
         </div>
-
-        <div className="container-fluid populer">
-            <div className="container py-5">
-                <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
-                <Populer/>  
-            </div>
-
-        </div>
-
-    </> )
+    </div>
+    <Footer/>
+    
+    </> );
 }
  
-export default Home;
+export default Home;<>
+</>

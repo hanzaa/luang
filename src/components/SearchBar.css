@@ -1,11 +1,12 @@
 .btn-secondary {
     background-color: rgba(141, 52, 255, 1);
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
     font-family: Poppins;
     border:1px solid black;
-
   }
+.btn-search{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
 
 .btn-secondary:hover{
     background-color: rgb(108, 0, 246);

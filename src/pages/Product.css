@@ -1,0 +1,44 @@
+.btn-under{
+    position: relative;
+    text-decoration: none;  
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+    
+}
+
+.btn-under:after{
+    content:"";
+    position: absolute;
+    background-color:#8D34FF;
+    height: 3px;
+    width: 0;
+    left:0;
+    bottom: -10px;
+    transition:0.3s;
+}
+
+.btn-under:hover{
+    color:rgba(141, 52, 255, 1);
+}
+.btn-under:hover:after{
+    width: 100%;
+    color:rgba(141, 52, 255, 1);   
+}
+
+.btn-under:active{
+    border: 0;
+}
+
+.btn-on{
+    color:rgba(141, 52, 255, 1); 
+}
+.btn-on:after{
+    width: 100%;
+}
+
+.btn-off{
+    color:black
+}
+.btn-off:after{
+    width: 0;
+}

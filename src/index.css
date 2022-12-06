@@ -19,10 +19,6 @@ code {
   font-family: Poppins;
 }
 
-@font-face {
-  font-family: 'Poppins';
-  src: local('Poppins'), url(./fonts/Poppins/Poppins-Regular.ttf) format('truetype');
-}
 
 @font-face {
   font-family: 'Poppins';
@@ -36,3 +32,19 @@ code {
   font-weight: 600;
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-Light.ttf) format('truetype');
+  font-weight: 300;
+}

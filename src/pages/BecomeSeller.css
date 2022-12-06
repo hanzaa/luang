@@ -1,0 +1,25 @@
+.qr{
+    height: 12%;
+    right: 25%;
+    top: 20%;
+}
+.code{
+    height: 12%;
+    right: 5%;
+    top: 30%;
+}
+.coin{
+    height: 12%;
+    right: 37%;
+    top: 50%;
+}
+.play{
+    height: 12%;
+    right: 30%;
+    bottom: 3%;
+}
+.eth{
+    height: 12%;
+    right: 5%;
+    bottom: 3%;
+}

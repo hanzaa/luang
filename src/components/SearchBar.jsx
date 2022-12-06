@@ -6,7 +6,7 @@ const SearcBar = () => {
             <div className="container-fluid">
                 <form className="d-flex" role="search">
                 <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-secondary" type="submit">Cari</button>
+                <button className="btn btn-secondary btn-search" type="submit" >Cari</button>
                 </form>
             </div>
         
