@@ -27,7 +27,7 @@ const PopPesan = (props) => {
 
             <div className="row px-3">
                 <button type="button" className="btn btn-secondary fw-bold" 
-                style={{letterSpacing:"1px", fontSize:"16px"}} onClick={()=>{setPopPesan(true)}}>Lanjut</button>
+                style={{letterSpacing:"1px", fontSize:"16px"}}>Lanjut</button>
             </div>
         </div>
     </div>

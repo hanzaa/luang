@@ -17,13 +17,13 @@ const BecomeSeller = () => {
             </div>
             <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                <Link className="nav-link active" to='/eksplorasi'>Eksplorasi</Link>
+                <Link className="nav-link active" to='/'>Eksplorasi</Link>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='/'>Jadi Penjual</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to='/' onClick={() => {props.popLogin(true)}}>Masuk</Link>
+                <Link className="nav-link" to='/'>Masuk</Link>
                 </li>        
             </ul>
             <form>
