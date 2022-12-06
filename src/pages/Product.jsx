@@ -57,15 +57,15 @@ const Product = () => {
                 <div className="row">
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${biasa?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>{setBiasa(true), setSpesial(false), setEkstrim(false)}}>biasa</button>
+                        style={{fontSize:"20px"}} onClick={()=>(setBiasa(true), setSpesial(false), setEkstrim(false))}>biasa</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${spesial?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>{setSpesial(true), setBiasa(false), setEkstrim(false)}}>spesial</button>
+                        style={{fontSize:"20px"}} onClick={()=>(setSpesial(true), setBiasa(false), setEkstrim(false))}>spesial</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${ekstrim?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>{setEkstrim(true),setBiasa(false),setSpesial(false)}}>ekstrim</button>
+                        style={{fontSize:"20px"}} onClick={()=>(setEkstrim(true),setBiasa(false),setSpesial(false))}>ekstrim</button>
                     </div>
                     
                 </div>

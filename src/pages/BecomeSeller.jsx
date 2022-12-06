@@ -27,7 +27,7 @@ const BecomeSeller = () => {
                 </li>        
             </ul>
             <form>
-                <button className="btn btn-sm btn-outline-secondary" type="button" onClick={()=>{props.popRegister(true)}} style={{color:"#8D34FF",borderColor:"#8D34FF"}}>Daftar</button>
+                <button className="btn btn-sm btn-outline-secondary" type="button" style={{color:"#8D34FF",borderColor:"#8D34FF"}}>Daftar</button>
             </form>
             </div>
         </div>
