@@ -170,7 +170,7 @@ const Product = () => {
         </div>
         <div className="row d-flex align-items-center py-2 my-4">
             <div className="col-1 pe-0">
-            <img src={require("../assets/pp.jpg")} width="80rem"  className="rounded-circle" alt='profile picture'></img>
+            <img src={require("../assets/pp.jpg")} width="80rem"  className="rounded-circle" alt='...'></img>
             </div>
             <div className="col-11">
                 <h5 className="fw-medium ms-3 mb-0 p-0" style={{fontSize:"24px"}}>M. Farhan Zachary</h5>
