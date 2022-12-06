@@ -74,12 +74,12 @@ const Product = () => {
             <div className="col-4" style={{border:"solid black 1px",borderRadius:"8px"}}>
                 <div className="row">
                     <div className="col-4">
-                        <button type="button" className={`btn btn-under p-3 pb-0 ${biasa?"btn-on":null}`} 
+                        <button type="button" className={`btn btn-under p-3 pb-0 ${biasa?"btn-on":""}`} 
                         style={{fontSize:"20px"}} onClick={()=>{clickbiasa}}>biasa</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${spesial?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>{clickspesial}}>spesial</button>
+                        style={{fontSize:"20px"}} onClick={()=>{setSpesial(true),setBiasa(false),setEkstrim(false)}}>spesial</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${ekstrim?"btn-on":null}`} 
@@ -152,7 +152,7 @@ const Product = () => {
                     <button type="button" className="btn btn-secondary fw-bold" 
                     style={{letterSpacing:"1px", fontSize:"24px"}} onClick={()=>{setPopPesan(true)}}>Lanjut</button>
                 </div>
-                
+
                 {popPesan && <PopPesan popPesan={setPopPesan}/> }
                 
 
