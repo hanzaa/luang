@@ -16,12 +16,12 @@ const NavBar = () => {
             <ul className="navbar-nav">
                 <li className="nav-item">
                 <Link className="nav-link active" to='/eksplorasi'>
-                <img src={require("../assets/star.png")}></img>                
+                <img src={require("../assets/star.png")} alt='...'></img>                
                 </Link>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='/home'>
-                <img src={require("../assets/message.png")}></img>
+                <img src={require("../assets/message.png")} alt='...'></img>
                 </Link>
                 </li>
                 <li className="nav-item">
@@ -29,7 +29,7 @@ const NavBar = () => {
                 </li> 
                 <li>
                 <Link>
-                <img src={require("../assets/pp.jpg")} width="50rem" className="rounded-circle" />
+                <img src={require("../assets/pp.jpg")} width="50rem" className="rounded-circle" alt='...'/>
                 </Link>
                 </li>       
             </ul>

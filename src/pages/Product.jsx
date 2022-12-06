@@ -10,6 +10,24 @@ const Product = () => {
     const [ekstrim,setEkstrim] = useState(false)
     const [popPesan, setPopPesan] = useState(false)
 
+    const clickbiasa = () =>{
+        setBiasa(true) 
+        setSpesial(false) 
+        setEkstrim(false)
+    }
+
+    const clickspesial = () =>{
+        setSpesial(true)
+        setBiasa(false)
+        setEkstrim(false)
+    }
+
+    const clickekstrim = () =>{
+        setEkstrim(true)
+        setBiasa(false)
+        setSpesial(false)
+    }
+
     return ( <>
     <NavBar/>
     <div className="container">
@@ -18,7 +36,7 @@ const Product = () => {
         </div>
         <div className="row d-flex align-items-center py-5">
             <div className="col-1 ">
-            <img src={require("../assets/pp.jpg")} width="50rem"  className="rounded-circle"></img>
+            <img src={require("../assets/pp.jpg")} width="50rem"  className="rounded-circle" alt='...'></img>
             </div>
             <div className="col-11 ps-0">
                 <h5 className="fw-medium mb-0 p-0" style={{fontSize:"16px"}}>M. Farhan Zachary</h5>
@@ -57,15 +75,15 @@ const Product = () => {
                 <div className="row">
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${biasa?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>(setBiasa(true), setSpesial(false), setEkstrim(false))}>biasa</button>
+                        style={{fontSize:"20px"}} onClick={()=>{clickbiasa}}>biasa</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${spesial?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>(setSpesial(true), setBiasa(false), setEkstrim(false))}>spesial</button>
+                        style={{fontSize:"20px"}} onClick={()=>{clickspesial}}>spesial</button>
                     </div>
                     <div className="col-4">
                         <button type="button" className={`btn btn-under p-3 pb-0 ${ekstrim?"btn-on":null}`} 
-                        style={{fontSize:"20px"}} onClick={()=>(setEkstrim(true),setBiasa(false),setSpesial(false))}>ekstrim</button>
+                        style={{fontSize:"20px"}} onClick={()=>{clickekstrim}}>ekstrim</button>
                     </div>
                     
                 </div>
@@ -134,6 +152,7 @@ const Product = () => {
                     <button type="button" className="btn btn-secondary fw-bold" 
                     style={{letterSpacing:"1px", fontSize:"24px"}} onClick={()=>{setPopPesan(true)}}>Lanjut</button>
                 </div>
+                
                 {popPesan && <PopPesan popPesan={setPopPesan}/> }
                 
 
