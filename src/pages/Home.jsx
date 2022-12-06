@@ -2,6 +2,7 @@ import './Home.css'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Populer from '../components/Populer';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return ( <>
@@ -58,11 +59,16 @@ const Home = () => {
                 </div>
             </div>
         </div>
-    </div>
-    <Footer/>
-    
-    </> );
+
+        <div className="container-fluid populer">
+            <div className="container py-5">
+                <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
+                <Populer/>  
+            </div>
+
+        </div>
+
+    </> )
 }
  
-export default Home;<>
-</>
+export default Home;
