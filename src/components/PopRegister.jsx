@@ -45,9 +45,10 @@ const PopRegister = (props) => {
               
               // jika berhasil, redirect ke halaman login
               alert('BERHASIL REGISTER!!!')
+              console.log(response)
             } catch (error) {
               // jika gagal, tampilkan alert 'Register Gagal'
-              alert('Register Gagal');  
+              alert(error.response.data)  
             }
           }
 
