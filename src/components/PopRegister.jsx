@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+
 const base_url = process.env.REACT_APP_URL_BACKEND
 
 
@@ -18,7 +20,7 @@ const PopRegister = (props) => {
         const cpv=event.target.confirmPassword.value
         const pv=event.target.password.value
 
-        if(data.get('registerEmail')=='' || data.get('registerUsername')==' ' || data.get('password') =='' ||  data.get('confirmPassword')==''){
+        if(data.get('email')=='' || data.get('username')==' ' || data.get('password') =='' ||  data.get('confirmPassword')==''){
             alert('Fill All The Form First!')
         }else if(passwordError) {
             event.target.password.setCustomValidity(passwordError)
@@ -26,28 +28,30 @@ const PopRegister = (props) => {
             event.target.confirmPassword.setCustomValidity(confirmPasswordError)
         }else{
             console.log({
-                email: data.get('registerEmail'),
-                username: data.get('registerUsername'),
+                email: data.get('email'),
+                username: data.get('username'),
                 pass: data.get('password'),
                 confirmPass: data.get('confirmPassword'),    
             })
+
+            try {
+              // 1. Lakukan Axios POST ke API Register pada backend di bawah ini
+              // body yang digunakan adalah username, email, dan password
+              const response = await axios.post(`${base_url}/register`, {
+                username: data.get('username'),
+                email: data.get('email'),
+                password: data.get('password')
+              })
+              
+              // jika berhasil, redirect ke halaman login
+              alert('BERHASIL REGISTER!!!')
+            } catch (error) {
+              // jika gagal, tampilkan alert 'Register Gagal'
+              alert('Register Gagal');  
+            }
           }
 
       
-        // try {
-        //   // 1. Lakukan Axios POST ke API Register pada backend di bawah ini
-        //   // body yang digunakan adalah username, email, dan password
-        //   const response = await axios.post(`${base_url}/register`, {
-        //     username: data.get('username'),
-        //     email: data.get('email'),
-        //     password: data.get('password')
-        //   })
-          
-        //   // jika berhasil, redirect ke halaman login
-        // } catch (error) {
-        //   // jika gagal, tampilkan alert 'Register Gagal'
-        //   alert('Register Gagal');  
-        // }
     };
 
       
@@ -125,12 +129,12 @@ const PopRegister = (props) => {
             </div>
             <form onSubmit={event => handleSubmit(event)} >
                 <div className="mb-3 pt-1">
-                    <label htmlFor="registerEmail" className="form-label">Email address</label>
-                    <input type="email" className="form-control w-100" id="registerEmail" name="registerEmail" label="registerEmail" aria-describedby="emailHelp" placeholder="masukan email"/>
+                    <label htmlFor="email" className="form-label">Email address</label>
+                    <input type="email" className="form-control w-100" id="email" name="email" label="email" aria-describedby="emailHelp" placeholder="masukan email"/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="registerUsername" className="form-label">Username</label>
-                    <input type="text" className="form-control w-100" id="registerUsername" name="registerUsername" placeholder="masukan username"/>
+                    <label htmlFor="username" className="form-label">Username</label>
+                    <input type="text" className="form-control w-100" id="username" name="username" placeholder="masukan username"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="registerPassword" className="form-label">Password</label>
