@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+//mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
-
 
 const PopRegister = (props) => {
     
@@ -12,6 +12,7 @@ const PopRegister = (props) => {
         password:'',
         confirmPassword:''
     })
+
 
     const handleSubmit = async (event) => {
         event.target.confirmPassword.setCustomValidity("")
@@ -27,25 +28,21 @@ const PopRegister = (props) => {
         }else if(confirmPasswordError){
             event.target.confirmPassword.setCustomValidity(confirmPasswordError)
         }else{
-            console.log({
-                email: data.get('email'),
-                username: data.get('username'),
-                pass: data.get('password'),
-                confirmPass: data.get('confirmPassword'),    
-            })
 
             try {
-              // 1. Lakukan Axios POST ke API Register pada backend di bawah ini
-              // body yang digunakan adalah username, email, dan password
+              //melakukan Axios POST ke API Register pada backend di bawah ini
+             
               const response = await axios.post(`${base_url}/register`, {
                 username: data.get('username'),
                 email: data.get('email'),
                 password: data.get('password')
               })
               
-              // jika berhasil, redirect ke halaman login
               alert('BERHASIL REGISTER!!!')
-              console.log(response)
+              // jika berhasil, redirect ke halaman login
+              props.popLogin(true) 
+              props.popRegister(false)
+
             } catch (error) {
               // jika gagal, tampilkan alert 'Register Gagal'
               alert(error.response.data)  
@@ -138,13 +135,13 @@ const PopRegister = (props) => {
                     <input type="text" className="form-control w-100" id="username" name="username" placeholder="masukan username"/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="registerPassword" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control w-100" name="password" placeholder="Password" 
                     value={passwordInput.password}  onChange={handlePasswordChange} onKeyUp={handleValidation} />
                     <p className="text-danger">{passwordError}</p>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="registerConfirmPassword" className="form-label">Confirm Password</label>
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                     <input type="password" className="form-control w-100" name="confirmPassword" placeholder="Password" 
                     value={passwordInput.confirmPassword}  onChange={handlePasswordChange} onKeyUp={handleValidation} />
                     <p className="text-danger">{confirmPasswordError}</p>
