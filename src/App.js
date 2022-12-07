@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import BecomeSeller from "./pages/BecomeSeller";
 
-
 function App() {
 
 
@@ -15,7 +14,6 @@ function App() {
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/product' element={<Product/>}></Route>
         <Route path='/becomeseller' element={<BecomeSeller/>}></Route>
-
       </Routes>
     </BrowserRouter>
     
