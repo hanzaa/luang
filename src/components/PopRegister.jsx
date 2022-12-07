@@ -1,5 +1,4 @@
 const base_url = process.env.REACT_APP_URL_BACKEND
-import PasswordAndConfirmPasswordValidation from "../password-and-confirm-passsord-validation/PasswordAndConfirmPasswordValidation";
 import { useState } from "react";
 
 
