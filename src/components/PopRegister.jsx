@@ -1,5 +1,5 @@
-const base_url = process.env.REACT_APP_URL_BACKEND
 import { useState } from "react";
+const base_url = process.env.REACT_APP_URL_BACKEND
 
 
 const PopRegister = (props) => {
