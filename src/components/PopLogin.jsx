@@ -1,5 +1,38 @@
 import './PopLogin.css'
+import axios from 'axios';
+
+//mengambil link API backend dari environement variable
+const base_url = process.env.REACT_APP_URL_BACKEND
+
+
 const PopLogin = (props) => {
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+  
+        try {
+          //Melakukan Axios POST ke backend pada endpoint /login
+          const response = await axios.post(`${base_url}/login`, {
+            email: data.get('email'),
+            password: data.get('password')
+          })
+  
+          // simpan 'token' dan 'user' ke localStorage
+          localStorage.setItem('id',response.data.id)
+          localStorage.setItem('username',response.data.username)
+          localStorage.setItem('email',response.data.email)
+          
+          // jika berhasil, set localStorage 'user' dan 'token' serta redirect ke halaman profile
+          alert('Login Berhasil')
+          
+        } catch (error) {
+          // jika gagal, tampilkan alert 'Login Gagal'
+          alert(error.response.data.error);
+        }
+      };
+    
+
     return ( <>
     <div className="pop d-flex align-items-center justify-content-center">
         <div className="container login p-4 pt-3 m-5 ">
@@ -9,14 +42,14 @@ const PopLogin = (props) => {
             <div className="row d-flex justify-content-center">
                 <h3 className='fw-bold d-flex justify-content-center pt-5' style={{fontSize:"24px"}}>Masuk ke Luang</h3>
             </div>
-            <form >
+            <form onSubmit={handleSubmit}>
                 <div class="mb-3 pt-5">
-                    <label for="exampleInputEmail1" class="form-label" >Email address</label>
-                    <input type="email" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="masukan email"/>
+                    <label htmlFor="email" className="form-label">Email address</label>
+                    <input type="email" className="form-control w-100" id="email" name="email" label="email" aria-describedby="emailHelp" placeholder="masukan email"/>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control w-100" id="exampleInputPassword1" placeholder='password'/>
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input type="password" className="form-control w-100" name="password" placeholder="Password" />
                 </div>
                 <button type="submit" class="btn btn-primary w-100 fw-bold" style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
                 <p className='fw-light d-flex justify-content-center pt-5'>Belum punya akun? .<span className='link-danger' onClick={()=> {props.popLogin(false) ;props.popRegister(true)}}>daftar</span> .</p>
