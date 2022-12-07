@@ -18,22 +18,18 @@ const PopRegister = (props) => {
         const cpv=event.target.confirmPassword.value
         const pv=event.target.password.value
 
-        if(passwordError) {
+        if(data.get('registerEmail')=='' || data.get('registerUsername')==' ' || data.get('password') =='' ||  data.get('confirmPassword')==''){
+            alert('Fill All The Form First!')
+        }else if(passwordError) {
             event.target.password.setCustomValidity(passwordError)
-        } else if(cpv!=pv){
+        }else if(confirmPasswordError){
             event.target.confirmPassword.setCustomValidity(confirmPasswordError)
-        }else {
-            event.target.confirmPassword.setCustomValidity("")
-
+        }else{
             console.log({
                 email: data.get('registerEmail'),
                 username: data.get('registerUsername'),
                 pass: data.get('password'),
-                confirmPass: data.get('confirmPassword'),
-                data :data,
-                eventTarget: event.target,
-                eventcurrentTarget: event.currentTarget,
-                
+                confirmPass: data.get('confirmPassword'),    
             })
           }
 
