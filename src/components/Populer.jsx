@@ -1,19 +1,8 @@
 import './Populer.css'
-import { useEffect,useRef } from 'react';
+
 
 
 const Populer = () => {
-    const ref = useRef(null)
-
-    useEffect(()=>{
-
-        console.log('hello from useEffect')
-        console.log(ref.current.width)
-        console.log(ref.current.width)
-
-    },[])
-
-
     return ( <> 
                 <div className="container-fluid d-none d-md-block">
                     <div className="row">
@@ -62,7 +51,7 @@ const Populer = () => {
                   
                 <div id="carouselExampleControls" className="carousel slide d-block d-md-none" data-bs-ride="carousel">
                 <div  className="carousel-inner">
-                    <div ref ={ref} className="carousel-item active">
+                    <div className="carousel-item active">
                         <div className="card">
                             <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
                             <div className="card-body">
