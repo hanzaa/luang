@@ -1,17 +1,44 @@
 const base_url = process.env.REACT_APP_URL_BACKEND
+import PasswordAndConfirmPasswordValidation from "../password-and-confirm-passsord-validation/PasswordAndConfirmPasswordValidation";
+import { useState } from "react";
+
 
 const PopRegister = (props) => {
+    
+    const [passwordError, setPasswordErr] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+    const [passwordInput, setPasswordInput]= useState({
+        password:'',
+        confirmPassword:''
+    })
 
     const handleSubmit = async (event) => {
+        event.target.confirmPassword.setCustomValidity("")
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('registerEmail'),
-          username: data.get('registerUsername'),
-          pass: data.get('registerPassword'),
-          confirmPass: data.get('registerConfirmPassword'),
-          
-        })
+        const cpv=event.target.confirmPassword.value
+        const pv=event.target.password.value
+
+        if(passwordError) {
+            event.target.password.setCustomValidity(passwordError)
+        } else if(cpv!=pv){
+            event.target.confirmPassword.setCustomValidity(confirmPasswordError)
+        }else {
+            event.target.confirmPassword.setCustomValidity("")
+
+            console.log({
+                email: data.get('registerEmail'),
+                username: data.get('registerUsername'),
+                pass: data.get('password'),
+                confirmPass: data.get('confirmPassword'),
+                data :data,
+                eventTarget: event.target,
+                eventcurrentTarget: event.currentTarget,
+                
+            })
+          }
+
+      
         // try {
         //   // 1. Lakukan Axios POST ke API Register pada backend di bawah ini
         //   // body yang digunakan adalah username, email, dan password
@@ -26,7 +53,71 @@ const PopRegister = (props) => {
         //   // jika gagal, tampilkan alert 'Register Gagal'
         //   alert('Register Gagal');  
         // }
-      };
+    };
+
+      
+    const handlePasswordChange =(evnt)=>{
+    
+        const passwordInputValue = evnt.target.value.trim();
+        const passwordInputFieldName = evnt.target.name;
+        const NewPasswordInput = {...passwordInput,[passwordInputFieldName]:passwordInputValue}
+        setPasswordInput(NewPasswordInput);
+        
+    }
+
+    const handleValidation= (evnt)=>{
+        //reset custom validity when user is typing
+        evnt.target.setCustomValidity("")
+    
+        const passwordInputValue = evnt.target.value.trim();
+        const passwordInputFieldName = evnt.target.name;
+    
+        //for password 
+        if(passwordInputFieldName==='password'){
+            const uppercaseRegExp   = /(?=.*?[A-Z])/;
+            const lowercaseRegExp   = /(?=.*?[a-z])/;
+            const digitsRegExp      = /(?=.*?[0-9])/;
+            const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+            const minLengthRegExp   = /.{8,}/;
+        
+            const passwordLength =      passwordInputValue.length;
+            const uppercasePassword =   uppercaseRegExp.test(passwordInputValue);
+            const lowercasePassword =   lowercaseRegExp.test(passwordInputValue);
+            const digitsPassword =      digitsRegExp.test(passwordInputValue);
+            const specialCharPassword = specialCharRegExp.test(passwordInputValue);
+            const minLengthPassword =   minLengthRegExp.test(passwordInputValue);
+        
+            let errMsg ="";
+            if(passwordLength===0){
+                    errMsg="Password is empty";
+            }else if(!uppercasePassword){
+                    errMsg="At least one Uppercase";
+            }else if(!lowercasePassword){
+                    errMsg="At least one Lowercase";
+            }else if(!digitsPassword){
+                    errMsg="At least one digit";
+            }else if(!specialCharPassword){
+                    errMsg="At least one Special Characters";
+            }else if(!minLengthPassword){
+                    errMsg="At least minumum 8 characters";
+            }else{
+                errMsg="";
+            }
+            setPasswordErr(errMsg);
+        }
+        
+        // for confirm password
+        if(passwordInputFieldName=== "confirmPassword" || (passwordInputFieldName==="password" && passwordInput.confirmPassword.length>0) ){
+                
+            if(passwordInput.confirmPassword!==passwordInput.password)
+            {
+            setConfirmPasswordError("Confirm password is not matched");
+            }else{
+            setConfirmPasswordError("");
+            }
+            
+        }
+    }
 
     return ( <>
         <div className="pop d-flex align-items-center justify-content-center">
@@ -48,11 +139,15 @@ const PopRegister = (props) => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="registerPassword" className="form-label">Password</label>
-                    <input type="password" className="form-control w-100" id="registerPassword" name="registerPassword" placeholder="password"/>
+                    <input type="password" className="form-control w-100" name="password" placeholder="Password" 
+                    value={passwordInput.password}  onChange={handlePasswordChange} onKeyUp={handleValidation} />
+                    <p className="text-danger">{passwordError}</p>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="registerConfirmPassword" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control w-100" id="registerConfirmPassword" name="registerConfirmPassword" placeholder="confirm password"/>
+                    <input type="password" className="form-control w-100" name="confirmPassword" placeholder="Password" 
+                    value={passwordInput.confirmPassword}  onChange={handlePasswordChange} onKeyUp={handleValidation} />
+                    <p className="text-danger">{confirmPasswordError}</p>
                 </div>
                 <button type="submit" className="btn btn-primary w-100 fw-bold" 
                 style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
