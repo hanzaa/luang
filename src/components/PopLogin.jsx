@@ -1,5 +1,6 @@
 import './PopLogin.css'
 import axios from 'axios';
+axios.defaults.withCredentials = true
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
@@ -13,6 +14,7 @@ const PopLogin = (props) => {
   
         try {
           //Melakukan Axios POST ke backend pada endpoint /login
+          
           const response = await axios.post(`${base_url}/login`, {
             email: data.get('email'),
             password: data.get('password')
@@ -25,6 +27,7 @@ const PopLogin = (props) => {
           
           // jika berhasil, set localStorage 'user' dan 'token' serta redirect ke halaman profile
           alert('Login Berhasil')
+          console.log(response)
           
         } catch (error) {
           // jika gagal, tampilkan alert 'Login Gagal'
