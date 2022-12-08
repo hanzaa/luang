@@ -5,18 +5,52 @@ import Populer from '../components/Populer';
 import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import Home from './Home';
+import axios from 'axios';
+
+//mengambil link API backend dari environement variable
+const base_url = process.env.REACT_APP_URL_BACKEND
 
 const Welcome = () => {
-    const [popLogin,SetPopLogin] = useState(false);
-    const [popRegister,SetPopRegister] = useState(false);
+    const [popLogin,setPopLogin] = useState(false);
+    const [popRegister,setPopRegister] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);   
+    
+    useEffect(()=>{
 
-    return ( 
+        const token=localStorage.getItem('token')
+
+        const verify = async() =>{
+            try {
+              const response = await axios.post(`${base_url}/verify`, {
+                token: token
+              })
+              if(response.status == 200){
+                setIsLogin(true)
+              }
+              
+            } catch (error) {
+              console.log(error)
+            }
+  
+        }
+
+        if(token){
+            verify()
+        }    
+    },[])
+
+    return (
+        <>
+        {isLogin 
+        ? <Home isLogin={setIsLogin}/>
+        : 
         <>
         <div className='welcomee'></div>
-        <NavBar0 popLogin={SetPopLogin} popRegister={SetPopRegister}/>
-        {popLogin && <PopLogin popLogin={SetPopLogin} popRegister={SetPopRegister}/>}
-        {popRegister && <PopRegister popLogin={SetPopLogin} popRegister={SetPopRegister}/>}
+        <NavBar0 popLogin={setPopLogin} popRegister={setPopRegister}/>
+        {popLogin && <PopLogin popLogin={setPopLogin} popRegister={setPopRegister} isLogin={setIsLogin}/>}
+        {popRegister && <PopRegister popLogin={setPopLogin} popRegister={setPopRegister}/>}
         <div className="container">
             <div className='row welcome '>
                 <div className='col'>
@@ -111,7 +145,9 @@ const Welcome = () => {
         </div>
         <Footer/>
 
-    </> )
+    </>}
+    </>
+     )
 }
  
 export default Welcome;
