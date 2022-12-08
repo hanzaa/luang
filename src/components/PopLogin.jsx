@@ -22,9 +22,14 @@ const PopLogin = (props) => {
           localStorage.setItem('id',response.data.id)
           localStorage.setItem('username',response.data.username)
           localStorage.setItem('email',response.data.email)
+          localStorage.setItem('token',response.data.token)
           
-          // jika berhasil, set localStorage 'user' dan 'token' serta redirect ke halaman profile
           alert('Login Berhasil')
+          
+
+          // redirect ke halaman home
+          props.isLogin(true) 
+          props.popLogin(false)
           
         } catch (error) {
           // jika gagal, tampilkan alert 'Login Gagal'
@@ -43,15 +48,15 @@ const PopLogin = (props) => {
                 <h3 className='fw-bold d-flex justify-content-center pt-5' style={{fontSize:"24px"}}>Masuk ke Luang</h3>
             </div>
             <form onSubmit={handleSubmit}>
-                <div class="mb-3 pt-5">
+                <div className="mb-3 pt-5">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control w-100" id="email" name="email" label="email" aria-describedby="emailHelp" placeholder="masukan email"/>
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control w-100" name="password" placeholder="Password" />
                 </div>
-                <button type="submit" class="btn btn-primary w-100 fw-bold" style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
+                <button type="submit" className="btn btn-primary w-100 fw-bold" style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
                 <p className='fw-light d-flex justify-content-center pt-5'>Belum punya akun? .<span className='link-danger' onClick={()=> {props.popLogin(false) ;props.popRegister(true)}}>daftar</span> .</p>
             </form>
         </div>
