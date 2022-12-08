@@ -1,6 +1,5 @@
 import './PopLogin.css'
 import axios from 'axios';
-axios.defaults.withCredentials = true
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
