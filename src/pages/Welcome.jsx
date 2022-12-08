@@ -1,13 +1,17 @@
 import './Welcome.css';
 import SearcBar from '../components/SearchBar';
 import NavBar0 from '../components/NavBar0';
-import Populer from '../components/Populer';
 import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
 import { useState,useEffect } from 'react';
 import Home from './Home';
 import axios from 'axios';
+
+import React from 'react';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
@@ -79,7 +83,80 @@ const Welcome = () => {
         <div className="container-fluid populer">
             <div className="container py-5">
                 <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
-                <Populer/>  
+                <OwlCarousel className='owl-theme' loop margin={10} nav>
+                    <div className="item ">
+                        <div className="card">
+                            <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Desain Logo</h5>
+                                <p className="card-text">Buat Logo khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Voice Actor</h5>
+                                <p className="card-text">Buat suara video khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Fotografi</h5>
+                                <p className="card-text">Buat Foto khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Kreatif Sosial Media</h5>
+                                <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item ">
+                        <div className="card">
+                            <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Desain Logo</h5>
+                                <p className="card-text">Buat Logo khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Voice Actor</h5>
+                                <p className="card-text">Buat suara video khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Fotografi</h5>
+                                <p className="card-text">Buat Foto khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="card">
+                            <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">Kreatif Sosial Media</h5>
+                                <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                </OwlCarousel> 
             </div>
 
         </div>
