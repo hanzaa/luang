@@ -3,16 +3,16 @@ import NavBar from '../components/NavBar';
 import Populer from '../components/Populer';
 import Footer from '../components/Footer';
 
-const Home = () => {
+const Home = (props) => {
     return ( <>
     <div className="home"></div>
-    <NavBar/>
+    <NavBar isLogin={props.isLogin}/>
     <div className="container pb-5">
         <div className="row py-5">
             <div className="col-2 me-4 p-4 " style={{background:"#D9D9D9"}}>
                 <h1 className='fw-bold' style={{fontSize:"24px"}}>Hi Fais</h1>
                 <h5 className='fw-medium' style={{fontSize:"11px"}}>Cari penjual yang cocok untukmu</h5>
-                <button type="button" class="btn btn-secondary" style={{fontSize:"11px"}}>Buat Penawaran</button>
+                <button type="button" className="btn btn-secondary" style={{fontSize:"11px"}}>Buat Penawaran</button>
             </div>
             <div className="col-9 bg-danger ">
                 <h3 className='p-3 ps-5 text-white fw-normal' style={{fontSize:"20px"}}>Judul Proyek</h3>
