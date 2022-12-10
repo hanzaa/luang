@@ -17,7 +17,6 @@ const NavBar = () => {
         localStorage.removeItem('username');
         localStorage.removeItem('email');
       
-
         // 2. Hit endpoint logout dengan body jwt yang didapat dari localstorage
         // dan setelah berhasil, beri alert sukses
         await axios.post(`${base_url}/logout`, {
@@ -29,9 +28,6 @@ const NavBar = () => {
             // 3. Kembalikan tampilan ke halaman home
             navigate('/')
         })
-
-        
-
         
     }
 

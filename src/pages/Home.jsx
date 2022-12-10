@@ -9,11 +9,13 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
 
     const [data, setData] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() =>{
         const getData = async () =>{
@@ -90,7 +92,8 @@ const Home = () => {
                     {!!data && data.length > 0 ? data.map((product) => {
                         return(
                             <div className="item" key={product.id}>
-                                <div className="card">
+
+                                <div className="card" onClick={()=>{navigate(`/product/${product.id}`)}}>
                                     <img src={product.images[0]} className="d-block w-100" alt="product"/>
                                     <div className="card-body">
                                         <h5 className="card-title fw-semibold">{product.title}</h5>
