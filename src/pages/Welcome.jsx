@@ -34,9 +34,9 @@ const Welcome = () => {
             try {
                 //Melakukan data dari endpoint API 
                 const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-                const arr = response.data
-                console.log(arr)
+                const arr = await response.data
                 setData(arr)
+                console.log(data)
                 setLoading(false)
             } catch (error) {
                 alert(error.response.data.error);
@@ -158,7 +158,7 @@ const Welcome = () => {
                                 </div>
                             </div>
                         )
-                        }) :<p>Fail to get data from API, try agian</p>}
+                        }) :<p>Fail to get data from API, try again</p>}
                             
                 </OwlCarousel> 
             </div>
