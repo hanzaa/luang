@@ -14,17 +14,16 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 //mengambil link API backend dari environement variable
-const base_url = process.env.REACT_APP_URL_BACKEND
+const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Welcome = () => {
     const [popLogin,setPopLogin] = useState(false);
     const [popRegister,setPopRegister] = useState(false);
     const [isLogin, setIsLogin] = useState(false);   
+    const [data, setData] = useState([])
     
     useEffect(()=>{
-
         const token=localStorage.getItem('token')
-
         const verify = async() =>{
             try {
               const response = await axios.post(`${base_url}/verify`, {
@@ -37,18 +36,31 @@ const Welcome = () => {
             } catch (error) {
               console.log(error)
             }
-  
         }
 
         if(token){
             verify()
-        }    
+        }  
+            
+        const getData = async () =>{
+            try {
+            const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
+                setData(response.data)
+                
+                } catch (error) {
+                // jika gagal, tampilkan alert 'Login Gagal'
+                alert(error.response.data.error);
+                }  
+        }
+    
+        getData()
+
     },[])
 
     return (
         <>
         {isLogin 
-        ? <Home isLogin={setIsLogin}/>
+        ? <Home isLogin={setIsLogin} data={data}/>
         : 
         <>
         <div className='welcomee'></div>
@@ -84,7 +96,7 @@ const Welcome = () => {
             <div className="container py-5">
                 <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
                 <OwlCarousel className='owl-theme' loop margin={10} nav>
-                    <div className="item ">
+                    {/* <div className="item ">
                         <div className="card">
                             <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
                             <div className="card-body">
@@ -119,43 +131,23 @@ const Welcome = () => {
                                 <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
                             </div>
                         </div>
-                    </div>
-                    <div className="item ">
-                        <div className="card">
-                            <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Desain Logo</h5>
-                                <p className="card-text">Buat Logo khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
+                    </div> */}
+
+                    {!!data && data.length > 0 ? data.map((product) => {
+                        return(
+                            <div className="item" key={product.id}>
+                                <div className="card">
+                                    <img src={product.images[0]} className="d-block w-100" alt="product"/>
+                                    <div className="card-body">
+                                        <h5 className="card-title fw-semibold">{product.title}</h5>
+                                        <p className="card-text">{product.description}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Voice Actor</h5>
-                                <p className="card-text">Buat suara video khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Fotografi</h5>
-                                <p className="card-text">Buat Foto khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Kreatif Sosial Media</h5>
-                                <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
+                        )
+                        }) 
+                    :null}
+                            
                 </OwlCarousel> 
             </div>
 
