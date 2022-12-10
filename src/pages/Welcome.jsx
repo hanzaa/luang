@@ -23,8 +23,28 @@ const Welcome = () => {
     const [popLogin,setPopLogin] = useState(false);
     const [popRegister,setPopRegister] = useState(false);
     const [isLogin, setIsLogin] = useState(false);   
-    const [data, setData] = useState([])
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
+    const [data, setData] = useState(null)
+
+    useEffect(() =>{
+        setLoading(true)
+
+        const getData = async () =>{
+            try {
+                //Melakukan data dari endpoint API 
+                const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
+                const arr = response.data
+                console.log(arr)
+                setData(arr)
+                setLoading(false)
+            } catch (error) {
+                alert(error.response.data.error);
+            }  
+        }
+        getData()
+
+    },[])
 
     
     useEffect(()=>{
@@ -43,25 +63,14 @@ const Welcome = () => {
               console.log(error)
             }
         }
-
-        const getData = async () =>{
-            try {
-                const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-                setData(response.data)
-                
-            } catch (error) {
-                // jika gagal, tampilkan alert 'Login Gagal'
-                alert(error.response.data.error);
-            }  
-        }
         
         if(token){
             verify()
         }  
-            
-        getData()
 
     },[isLogin])
+
+
 
     return (
         <>
@@ -135,6 +144,8 @@ const Welcome = () => {
                         </div>
                     </div> */}
 
+                    {loading && "Loading..."}
+
                     {!!data && data.length > 0 ? data.map((product) => {
                         return(
                             <div className="item" key={product.id}>
@@ -147,8 +158,7 @@ const Welcome = () => {
                                 </div>
                             </div>
                         )
-                        }) 
-                    :null}
+                        }) :<p>Fail to get data from API, try agian</p>}
                             
                 </OwlCarousel> 
             </div>

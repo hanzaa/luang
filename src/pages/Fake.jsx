@@ -11,20 +11,16 @@ useEffect(() => {
 
     const getData = async () =>{
         try {
-            //Melakukan Axios POST ke backend pada endpoint /login
+            //Melakukan data dari endpoint API 
             const response = await axios.get(`https://api.escuelajs.co/api/v1/products`)
             const arr = response.data
             console.log(arr)
             setData(arr)
             setLoading(false)
-    
-            
             } catch (error) {
-            // jika gagal, tampilkan alert 'Login Gagal'
             alert(error.response.data.error);
             }  
     }
-
     getData()
 
 }, [])
