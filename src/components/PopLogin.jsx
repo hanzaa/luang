@@ -26,10 +26,9 @@ const PopLogin = (props) => {
           localStorage.setItem('token',response.data.token)
           
           alert('Login Berhasil')
-          console.log(response)
           
 
-          // redirect ke halaman home
+          // set isLogin true 
           props.isLogin(true) 
           props.popLogin(false)
           

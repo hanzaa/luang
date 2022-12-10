@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
 
 
-const NavBar = (props) => {
+const NavBar = () => {
+
+    const navigate = useNavigate()
     
     const handleLogout = async () => {
         // 1. Hapus localStorage
         localStorage.removeItem('id');
-        localStorage.removeItem('name');
+        localStorage.removeItem('username');
         localStorage.removeItem('email');
       
 
@@ -23,10 +26,11 @@ const NavBar = (props) => {
         .then((res) => {
             localStorage.removeItem('token');
             alert('Logout Success');
+            // 3. Kembalikan tampilan ke halaman home
+            navigate('/')
         })
 
-        // 3. Kembalikan tampilan ke halaman home
-        props.isLogin(false)
+        
 
         
     }

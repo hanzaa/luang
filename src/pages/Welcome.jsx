@@ -1,12 +1,15 @@
 import './Welcome.css';
+
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+import Home from './Home';
 import SearcBar from '../components/SearchBar';
 import NavBar0 from '../components/NavBar0';
 import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
-import { useState,useEffect } from 'react';
-import Home from './Home';
-import axios from 'axios';
 
 import React from 'react';
 import OwlCarousel from 'react-owl-carousel';
@@ -16,11 +19,14 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND;
 
+
 const Welcome = () => {
     const [popLogin,setPopLogin] = useState(false);
     const [popRegister,setPopRegister] = useState(false);
     const [isLogin, setIsLogin] = useState(false);   
     const [data, setData] = useState([])
+    const navigate=useNavigate()
+
     
     useEffect(()=>{
         const token=localStorage.getItem('token')
@@ -31,6 +37,7 @@ const Welcome = () => {
               })
               if(response.status == 200){
                 setIsLogin(true)
+                navigate('/home')
               }
               
             } catch (error) {
@@ -38,30 +45,26 @@ const Welcome = () => {
             }
         }
 
+        const getData = async () =>{
+            try {
+                const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
+                setData(response.data)
+                
+            } catch (error) {
+                // jika gagal, tampilkan alert 'Login Gagal'
+                alert(error.response.data.error);
+            }  
+        }
+        
         if(token){
             verify()
         }  
             
-        const getData = async () =>{
-            try {
-            const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-                setData(response.data)
-                
-                } catch (error) {
-                // jika gagal, tampilkan alert 'Login Gagal'
-                alert(error.response.data.error);
-                }  
-        }
-    
         getData()
 
-    },[])
+    },[isLogin])
 
     return (
-        <>
-        {isLogin 
-        ? <Home isLogin={setIsLogin} data={data}/>
-        : 
         <>
         <div className='welcomee'></div>
         <NavBar0 popLogin={setPopLogin} popRegister={setPopRegister}/>
@@ -214,8 +217,8 @@ const Welcome = () => {
         </div>
         <Footer/>
 
-    </>}
-    </>
+        </>
+        
      )
 }
  

@@ -11,7 +11,7 @@ import axios from 'axios';
 import { useState,useEffect } from 'react';
 
 
-const Home = (props) => {
+const Home = () => {
 
     const [data, setData] = useState([])
 
@@ -28,11 +28,11 @@ const Home = (props) => {
         }
     
         getData()
-    })
+    },[])
 
     return ( <>
     <div className="home"></div>
-    <NavBar isLogin={props.isLogin}/>
+    <NavBar/>
     <div className="container pb-5">
         <div className="row py-5">
             <div className="col-2 me-4 p-4 " style={{background:"#D9D9D9"}}>
@@ -45,9 +45,10 @@ const Home = (props) => {
                 <h5 className='p-1 ps-5 text-white fw-normal' style={{fontSize:"14px"}}>Carousel tentang project apa aja yang direkonendasi</h5>
             </div>
         </div>
+        
         <div className="row" style={{border:"solid black 1px", borderRadius:"8px"}}>
             <h3 className='p-4 fw-normal' style={{fontSize:"20px"}}>Rekomendasi untukmu</h3>
-            <div className="py-3">
+            
                 <OwlCarousel className='owl-theme' loop margin={10} nav>
                     {/* <div className="item ">
                         <div className="card">
@@ -85,6 +86,7 @@ const Home = (props) => {
                             </div>
                         </div>
                     </div> */}
+                    
                     {!!data && data.length > 0 ? data.map((product) => {
                         return(
                             <div className="item" key={product.id}>
@@ -99,10 +101,12 @@ const Home = (props) => {
                         )
                         }) 
                     :null}
+
                 </OwlCarousel>
-            </div>
+            
         </div>
     </div>
+    
     <div className="container-fluid footer">
         <div className="container">
             <div className="row pb-5">
