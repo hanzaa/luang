@@ -1,14 +1,21 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import './Product.css';
-import { useState } from "react";
 import PopPesan from "../components/PopPesan";
+
+import { useState,useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Product = () => {
     const [biasa,setBiasa] = useState(true)
     const [spesial,setSpesial] = useState(false)
     const [ekstrim,setEkstrim] = useState(false)
     const [popPesan, setPopPesan] = useState(false)
+    const [data,setData] = useState([])
+
+    //get paramenter from url
+    const {id} = useParams()
 
     const clickbiasa = () =>{
         setBiasa(true) 
@@ -28,11 +35,28 @@ const Product = () => {
         setSpesial(false)
     }
 
+    useEffect(() =>{
+        const getData = async () =>{
+            try {
+            const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
+                console.log(response.data)
+                console.log(response.data.images[0])
+                setData(response.data)
+                
+                } catch (error) {
+                // jika gagal, tampilkan alert 'Login Gagal'
+                alert(error.response.data.error);
+                }  
+        }
+    
+        getData()
+    },[])
+
     return ( <>
     <NavBar/>
     <div className="container">
         <div className="row">
-             <h3 className="fw-bold mt-5 pt-5" style={{fontSize:"24px"}}>Desain Logo</h3>
+             <h3 className="fw-bold mt-5 pt-5" style={{fontSize:"24px"}}>{data.title}</h3>
         </div>
         <div className="row d-flex align-items-center py-5">
             <div className="col-1 ">
@@ -47,18 +71,19 @@ const Product = () => {
             <div className="col-8">
                 <div id="carouselExampleControls" className="carousel slide " data-bs-ride="carousel">
                         <div  className="carousel-inner">
+                            {!!data && data.length > 0 ?
+                            <> 
                             <div className="carousel-item active">
-                                <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..." height="600vh"/>
+                                <img src={data.images[0]} className="d-block w-100" alt="..." height="600vh"/>
                             </div>
                             <div className="carousel-item">
-                                <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..." height="600vh"/>
+                                <img src={data.images[1]} className="d-block w-100" alt="..." height="600vh"/>
                             </div>
                             <div className="carousel-item">
-                                <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..." height="600vh"/>
+                                <img src={data.images[2]} className="d-block w-100" alt="..." height="600vh"/>
                             </div>
-                            <div className="carousel-item">
-                                <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..." height="600vh"/>
-                            </div>
+                            </>
+                            :<h3>you are seeing this 'cause img don't load properly</h3>}
                             
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -91,7 +116,7 @@ const Product = () => {
                 {biasa?
                 <>
                 <div className="row my-5 mx-1">
-                    <h3 className="fw-bold" style={{fontSize:"36px"}}>Rp25.000,00-</h3>
+                    <h3 className="fw-bold" style={{fontSize:"36px"}}>Rp{data.price}</h3>
                 </div>
                 <div className="row my-5">
                     <div className="container ">
@@ -163,7 +188,7 @@ const Product = () => {
              <h3 className="fw-bold mt-5" style={{fontSize:"24px"}}>Tentang Penawaran</h3>
         </div>
         <div className="row">
-            <p style={{fontSize:"18px"}}>Saya akan membuatkan Logo untuk bisnismu dengan  resolusi 360 x 480 sesuai dengan kebutuhanmu.  Logo bisnis, studio, game,  dan berbagai hal lainnya.</p>
+            <p style={{fontSize:"18px"}}>{data.description}</p>
         </div>
         <div className="row">
              <h3 className="fw-bold mt-5" style={{fontSize:"24px"}}>Tentang Penjual</h3>
