@@ -36,7 +36,7 @@ const Welcome = () => {
                 const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
                 const arr = await response.data
                 setData(arr)
-                // eslint-disable-next-line
+                
                 console.log(data)
                 setLoading(false)
             } catch (error) {
@@ -44,7 +44,7 @@ const Welcome = () => {
             }  
         }
         getData()
-
+    // eslint-disable-next-line
     },[])
 
     
@@ -57,19 +57,19 @@ const Welcome = () => {
               })
               if(response.status === 200){
                 setIsLogin(true)
-                // eslint-disable-next-line
                 navigate('/home')
-              }
-              
-            } catch (error) {
-              console.log(error)
+            }
+            
+        } catch (error) {
+            console.log(error)
             }
         }
         
         if(token){
             verify()
         }  
-
+        
+    // eslint-disable-next-line
     },[isLogin])
 
 
