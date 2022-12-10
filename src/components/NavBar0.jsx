@@ -16,7 +16,7 @@ const NavBar0 = (props)=>{
                 <Link className="nav-link active" to='/'>Eksplorasi</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to='/'>Jadi Penjual</Link>
+                <Link className="nav-link" to='/becomeseller'>Jadi Penjual</Link>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='/' onClick={() => {props.popLogin(true)}}>Masuk</Link>

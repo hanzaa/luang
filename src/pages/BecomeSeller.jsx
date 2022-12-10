@@ -20,14 +20,16 @@ const BecomeSeller = () => {
                 <Link className="nav-link active" to='/'>Eksplorasi</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to='/'>Jadi Penjual</Link>
+                <Link className="nav-link" to='/becomeseller'>Jadi Penjual</Link>
                 </li>
                 <li className="nav-item">
                 <Link className="nav-link" to='/'>Masuk</Link>
                 </li>        
             </ul>
             <form>
+                <Link to="/">
                 <button className="btn btn-sm btn-outline-secondary" type="button" style={{color:"#8D34FF",borderColor:"#8D34FF"}}>Daftar</button>
+                </Link>
             </form>
             </div>
         </div>
