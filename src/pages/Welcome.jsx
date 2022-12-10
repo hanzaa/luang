@@ -36,6 +36,7 @@ const Welcome = () => {
                 const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
                 const arr = await response.data
                 setData(arr)
+                // eslint-disable-next-line to the line before.
                 console.log(data)
                 setLoading(false)
             } catch (error) {
@@ -56,6 +57,7 @@ const Welcome = () => {
               })
               if(response.status === 200){
                 setIsLogin(true)
+                // eslint-disable-next-line to the line before.
                 navigate('/home')
               }
               
