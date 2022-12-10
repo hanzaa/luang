@@ -18,10 +18,8 @@ const PopRegister = (props) => {
         event.target.confirmPassword.setCustomValidity("")
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const cpv=event.target.confirmPassword.value
-        const pv=event.target.password.value
 
-        if(data.get('email')=='' || data.get('username')==' ' || data.get('password') =='' ||  data.get('confirmPassword')==''){
+        if(data.get('email')==='' || data.get('username')===' ' || data.get('password') ==='' ||  data.get('confirmPassword')===''){
             alert('Fill All The Form First!')
         }else if(passwordError) {
             event.target.password.setCustomValidity(passwordError)
@@ -32,16 +30,18 @@ const PopRegister = (props) => {
             try {
               //melakukan Axios POST ke API Register pada backend di bawah ini
              
-              const response = await axios.post(`${base_url}/register`, {
+              await axios.post(`${base_url}/register`, {
                 username: data.get('username'),
                 email: data.get('email'),
                 password: data.get('password')
+              }).then(()=> {
+                  
+                  alert('BERHASIL REGISTER!!!')
+                  // jika berhasil, redirect ke halaman login
+                  props.popLogin(true) 
+                  props.popRegister(false)
               })
               
-              alert('BERHASIL REGISTER!!!')
-              // jika berhasil, redirect ke halaman login
-              props.popLogin(true) 
-              props.popRegister(false)
 
             } catch (error) {
               // jika gagal, tampilkan alert 'Register Gagal'

@@ -50,7 +50,7 @@ const Product = () => {
         }
     
         getData()
-    },[])
+    },[id])
 
     return ( <>
     <NavBar/>

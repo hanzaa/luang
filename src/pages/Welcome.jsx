@@ -4,7 +4,6 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import Home from './Home';
 import SearcBar from '../components/SearchBar';
 import NavBar0 from '../components/NavBar0';
 import Footer from '../components/Footer';
@@ -35,7 +34,7 @@ const Welcome = () => {
               const response = await axios.post(`${base_url}/verify`, {
                 token: token
               })
-              if(response.status == 200){
+              if(response.status === 200){
                 setIsLogin(true)
                 navigate('/home')
               }

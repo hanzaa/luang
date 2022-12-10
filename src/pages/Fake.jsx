@@ -40,9 +40,9 @@ return (
             <p>id: {product.id}</p>
             <p>description: {product.description}</p>
             <p>price: {product.price}</p>
-            <img src={product.images[0]}></img>
-            <img src={product.images[1]}></img>
-            <img src={product.images[2]}></img>
+            <img src={product.images[0]} alt="..."></img>
+            <img src={product.images[1]} alt="..."></img>
+            <img src={product.images[2]} alt="..."></img>
             <h3>category name: {product.category.name}</h3>
             <p>category id: {product.category.name}</p>
             <p>category image: </p> <img src={product.category.image} alt='category' />
