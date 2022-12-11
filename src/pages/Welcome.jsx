@@ -8,6 +8,7 @@ import NavBar0 from '../components/NavBar0';
 import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
@@ -135,7 +136,6 @@ return (
         <div className="container py-5">
             <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
             {loading && "Loading..."}
-
             <Slider {...settings}>
                 {!!data && data.length > 0 
                 ? data.map((product) => {
@@ -153,7 +153,6 @@ return (
                     })
                 : (<p>API did not provided any product, try again.</p>)    
                 } 
-
             </Slider>
 
 
