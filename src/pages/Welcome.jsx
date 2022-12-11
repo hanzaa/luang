@@ -100,24 +100,6 @@ return (
     <div className="container-fluid populer">
         <div className="container py-5">
             <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
-            <OwlCarousel className='owl-theme' loop margin={10} nav>
-                {loading && "Loading..."}
-{!!data && data.length > 0 ? data.map((product) => {
-                    return(
-                        <div className="item" key={product.id}>
-                            <div className="card">
-                                <img src={product.images[0]} className="d-block w-100" alt="product"/>
-                                <div className="card-body">
-                                    <h5 className="card-title fw-semibold">{product.title}</h5>
-                                    <p className="card-text">{product.description}</p>
-                                </div>
-                            </div>
-                        </div>)
-
-    }):(<p>API did not provided any product, try again.</p>)
-}                       
-            </OwlCarousel>
-
             {loading && "Loading..."}
             <OwlCarousel>
             {!!data && data.length > 0 ? data.map((product) => {
@@ -138,43 +120,7 @@ return (
                 }):(<p>API did not provided any product, try again.</p>)
             } 
             </OwlCarousel>
-            {!!data && data.length > 0 ? data.map((product) => {
-                return(
-                    <OwlCarousel>
-                    <article key={product.id}>
-                    <h2>title: {product.title}</h2>
-                    <p>id: {product.id}</p>
-                    <p>description: {product.description}</p>
-                    <p>price: {product.price}</p>
-                    <img src={product.images[0]} alt="..."></img>
-                    <img src={product.images[1]} alt="..."></img>
-                    <img src={product.images[2]} alt="..."></img>
-                    <h3>category name: {product.category.name}</h3>
-                    <p>category id: {product.category.name}</p>
-                    <p>category image: </p> <img src={product.category.image} alt='category' />
-                    </article>
-                    </OwlCarousel>
-                    )
-                    
-                }):(<p>API did not provided any product, try again.</p>)
-            } 
-            {!!data && data.length > 0 ? data.map((product) => {
-                return(
-                    <article key={product.id}>
-                    <h2>title: {product.title}</h2>
-                    <p>id: {product.id}</p>
-                    <p>description: {product.description}</p>
-                    <p>price: {product.price}</p>
-                    <img src={product.images[0]} alt="..."></img>
-                    <img src={product.images[1]} alt="..."></img>
-                    <img src={product.images[2]} alt="..."></img>
-                    <h3>category name: {product.category.name}</h3>
-                    <p>category id: {product.category.name}</p>
-                    <p>category image: </p> <img src={product.category.image} alt='category' />
-                    </article>)
-                    
-                }):(<p>API did not provided any product, try again.</p>)
-            } 
+
         </div>
     </div>
 
