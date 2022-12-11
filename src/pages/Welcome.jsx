@@ -117,6 +117,7 @@ return (
     }):(<p>API did not provided any product, try again.</p>)
 }                       
             </OwlCarousel>
+            <OwlCarousel>
             {loading && "Loading..."}
     {!!data && data.length > 0 ? data.map((product) => {
         return(
@@ -135,6 +136,7 @@ return (
                
         }):(<p>API did not provided any product, try again.</p>)
     } 
+    </OwlCarousel>
         </div>
     </div>
 
