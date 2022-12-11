@@ -29,7 +29,7 @@ const [data, setData] = useState(null)
 
 useEffect(() => {
     setLoading(true)
-    axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)  
+    axios.get(`https://api.escuelajs.co/api/v1/products`)  
     .then((res) => {
         console.log(res)
         setData(res.data)
