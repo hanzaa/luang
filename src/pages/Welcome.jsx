@@ -62,7 +62,7 @@ const settings = {
 
 useEffect(() => {
     setLoading(true)
-    axios.get(`https://api.escuelajs.co/api/v1/products`)  
+    axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)  
     .then((res) => {
         console.log(res)
         setData(res.data)
