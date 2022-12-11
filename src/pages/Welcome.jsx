@@ -117,7 +117,7 @@ return (
     }):(<p>API did not provided any product, try again.</p>)
 }                       
             </OwlCarousel>
-            
+
             {loading && "Loading..."}
             <OwlCarousel>
             {!!data && data.length > 0 ? data.map((product) => {
@@ -138,6 +138,43 @@ return (
                 }):(<p>API did not provided any product, try again.</p>)
             } 
             </OwlCarousel>
+            {!!data && data.length > 0 ? data.map((product) => {
+                return(
+                    <OwlCarousel>
+                    <article key={product.id}>
+                    <h2>title: {product.title}</h2>
+                    <p>id: {product.id}</p>
+                    <p>description: {product.description}</p>
+                    <p>price: {product.price}</p>
+                    <img src={product.images[0]} alt="..."></img>
+                    <img src={product.images[1]} alt="..."></img>
+                    <img src={product.images[2]} alt="..."></img>
+                    <h3>category name: {product.category.name}</h3>
+                    <p>category id: {product.category.name}</p>
+                    <p>category image: </p> <img src={product.category.image} alt='category' />
+                    </article>
+                    </OwlCarousel>
+                    )
+                    
+                }):(<p>API did not provided any product, try again.</p>)
+            } 
+            {!!data && data.length > 0 ? data.map((product) => {
+                return(
+                    <article key={product.id}>
+                    <h2>title: {product.title}</h2>
+                    <p>id: {product.id}</p>
+                    <p>description: {product.description}</p>
+                    <p>price: {product.price}</p>
+                    <img src={product.images[0]} alt="..."></img>
+                    <img src={product.images[1]} alt="..."></img>
+                    <img src={product.images[2]} alt="..."></img>
+                    <h3>category name: {product.category.name}</h3>
+                    <p>category id: {product.category.name}</p>
+                    <p>category image: </p> <img src={product.category.image} alt='category' />
+                    </article>)
+                    
+                }):(<p>API did not provided any product, try again.</p>)
+            } 
         </div>
     </div>
 
