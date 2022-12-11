@@ -181,7 +181,7 @@ const Product = () => {
                     style={{letterSpacing:"1px", fontSize:"24px"}} onClick={()=>{setPopPesan(true)}}>Lanjut</button>
                 </div>
 
-                {popPesan && <PopPesan popPesan={setPopPesan}/> }
+                {popPesan && <PopPesan popPesan={setPopPesan} price={data.price}/> }
                 
 
             </div>
