@@ -9,10 +9,6 @@ import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
 
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND;
 
@@ -101,7 +97,7 @@ return (
         <div className="container py-5">
             <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
             {loading && "Loading..."}
-            <OwlCarousel>
+      
             {!!data && data.length > 0 ? data.map((product) => {
                 return(
                     <article key={product.id}>
@@ -119,7 +115,7 @@ return (
                     
                 }):(<p>API did not provided any product, try again.</p>)
             } 
-            </OwlCarousel>
+            
 
         </div>
     </div>

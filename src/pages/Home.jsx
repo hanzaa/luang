@@ -3,9 +3,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
 import React from 'react';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 
 import axios from 'axios';
 import { useState,useEffect } from 'react';
@@ -50,62 +48,6 @@ const Home = () => {
         
         <div className="row" style={{border:"solid black 1px", borderRadius:"8px"}}>
             <h3 className='p-4 fw-normal' style={{fontSize:"20px"}}>Rekomendasi untukmu</h3>
-            
-                <OwlCarousel className='owl-theme' loop margin={10} nav>
-                    {/* <div className="item ">
-                        <div className="card">
-                            <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Desain Logo</h5>
-                                <p className="card-text">Buat Logo khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Voice Actor</h5>
-                                <p className="card-text">Buat suara video khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Fotografi</h5>
-                                <p className="card-text">Buat Foto khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Kreatif Sosial Media</h5>
-                                <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div> */}
-                    
-                    {!!data && data.length > 0 ? data.map((product) => {
-                        return(
-                            <div className="item" key={product.id}>
-
-                                <div className="card" onClick={()=>{navigate(`/product/${product.id}`)}}>
-                                    <img src={product.images[0]} className="d-block w-100" alt="product"/>
-                                    <div className="card-body">
-                                        <h5 className="card-title fw-semibold">{product.title}</h5>
-                                        <p className="card-text">{product.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                        }) 
-                    :null}
-
-                </OwlCarousel>
             
         </div>
     </div>
