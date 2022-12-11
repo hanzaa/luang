@@ -42,9 +42,8 @@ return (
             <h3>category name: {product.category.name}</h3>
             <p>category id: {product.category.name}</p>
             <p>category image: </p> <img src={product.category.image} alt='category' />
-            </article>
-
-        )   
+            </article>)
+               
         }):(<p>API did not provided any product, try again.</p>)
     }
     </section>

@@ -1,9 +1,8 @@
-import './Welcome.css';
-
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import './Welcome.css';
 import SearcBar from '../components/SearchBar';
 import NavBar0 from '../components/NavBar0';
 import Footer from '../components/Footer';
@@ -24,27 +23,28 @@ const Welcome = () => {
     const [popRegister,setPopRegister] = useState(false);
     const [isLogin, setIsLogin] = useState(false);   
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState(null)
 
-    useEffect(() =>{
-        setLoading(true)
+const [loading, setLoading] = useState(false)
+const [data, setData] = useState(null)
 
-        const getData = async () =>{
-            try {
-                //Melakukan data dari endpoint API 
-                const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-                const arr = await response.data
-                setData(arr)
-                console.log(data)
-                setLoading(false)
+useEffect(() => {
+    setLoading(true)
+
+    const getData = async () =>{
+        try {
+            //Melakukan data dari endpoint API 
+            const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
+            const arr = response.data
+            console.log(arr)
+            setData(arr)
+            setLoading(false)
             } catch (error) {
-                alert(error.response.data.error);
+            alert(error.response.data.error);
             }  
-        }
-        getData()
-    // eslint-disable-next-line
-    },[])
+    }
+    getData()
+
+}, [])
 
     
     useEffect(()=>{
@@ -69,7 +69,7 @@ const Welcome = () => {
         }  
         
     // eslint-disable-next-line
-    },[isLogin])
+    }, [isLogin])
 
 
 
@@ -147,7 +147,7 @@ const Welcome = () => {
 
                     {loading && "Loading..."}
 
-                    {!!data && data.length > 0 ? data.map((product) => {
+    {!!data && data.length > 0 ? data.map((product) => {
                         return(
                             <div className="item" key={product.id}>
                                 <div className="card">
@@ -157,9 +157,11 @@ const Welcome = () => {
                                         <p className="card-text">{product.description}</p>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    }) :<p>Fail to get data from API, try again</p>}
+                            </div>)
+    
+        }):(<p>API did not provided any product, try again.</p>)
+    }
+        
                             
                 </OwlCarousel> 
             </div>
