@@ -74,7 +74,7 @@ const Home = () => {
             }
           }
         ]
-      };
+    };
 
     useEffect(() => {
         setLoading(true)
@@ -112,8 +112,8 @@ const Home = () => {
                 {!!data && data.length > 0 
                 ? data.map((product) => {
                     return(
-                    <div key={product.id} >
-                        <div className="card" onClick={()=>{navigate(`/product/${product.id}`)}}>
+                    <div>
+                        <div className="card" key={product.id} onClick={()=>{navigate(`/product/${product.id}`)}}>
                             <img src={product.images[0]} className="d-block w-100" alt="product"/>
                             <div className="card-body">
                                 <h5 className="card-title fw-semibold">{product.title}</h5>

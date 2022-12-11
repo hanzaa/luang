@@ -1,18 +1,22 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
-import './Product.css';
-import PopPesan from "../components/PopPesan";
-
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
+import './Product.css';
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import PopPesan from "../components/PopPesan";
 
 const Product = () => {
     const [biasa,setBiasa] = useState(true)
     const [spesial,setSpesial] = useState(false)
     const [ekstrim,setEkstrim] = useState(false)
     const [popPesan, setPopPesan] = useState(false)
+
+    const [loading, setLoading] = useState(false)
     const [data,setData] = useState([])
+    const [img,setImg] = useState([])
+    
 
     //get paramenter from url
     const {id} = useParams()
@@ -35,22 +39,20 @@ const Product = () => {
         setSpesial(false)
     }
 
-    useEffect(() =>{
-        const getData = async () =>{
-            try {
-            const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
-                console.log(response.data)
-                console.log(response.data.images[0])
-                setData(response.data)
-                
-                } catch (error) {
-                // jika gagal, tampilkan alert 'Login Gagal'
-                alert(error.response.data.error);
-                }  
-        }
-    
-        getData()
-    },[id])
+    useEffect(() => {
+        setLoading(true)
+        axios.get(`https://api.escuelajs.co/api/v1/products/${id}2`)  
+        .then((res) => {
+            console.log(res.data.images)
+            setData(res.data)
+            setImg(res.data.images)
+            setLoading(false)
+           
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [id])
 
     return ( <>
     <NavBar/>
@@ -70,22 +72,23 @@ const Product = () => {
         <div className="row">
             <div className="col-8">
                 <div id="carouselExampleControls" className="carousel slide " data-bs-ride="carousel">
-                        <div  className="carousel-inner">
-                            {!!data && data.length > 0 ?
-                            <> 
-                            <div className="carousel-item active">
-                                <img src={data.images[0]} className="d-block w-100" alt="..." height="600vh"/>
+                            {loading && "Loading..."}
+                            {!!data  
+                            ? 
+                            <div className="carousel-inner" >
+                                {img.map((img,index) => {
+                                    return(
+                                    <div className="carousel-item active" key={index}>
+                                        <img src = {img} className="d-block w-100" alt="..." height="600vh"/>
+                                    </div>
+                                    )
+                                })}
                             </div>
-                            <div className="carousel-item">
-                                <img src={data.images[1]} className="d-block w-100" alt="..." height="600vh"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img src={data.images[2]} className="d-block w-100" alt="..." height="600vh"/>
-                            </div>
-                            </>
-                            :<h3>you are seeing this 'cause img don't load properly</h3>}
-                            
-                        </div>
+                               
+                            : (<p>API did not provided any product, try again.</p>)    
+                            } 
+                        
+                           
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Previous</span>
