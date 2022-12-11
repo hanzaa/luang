@@ -29,21 +29,15 @@ const [data, setData] = useState(null)
 
 useEffect(() => {
     setLoading(true)
-
-    const getData = async () =>{
-        try {
-            //Melakukan data dari endpoint API 
-            const response = await axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-            const arr = response.data
-            console.log(arr)
-            setData(arr)
-            setLoading(false)
-            } catch (error) {
-            alert(error.response.data.error);
-            }  
-    }
-    getData()
-
+    axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)  
+    .then((res) => {
+        console.log(res)
+        setData(res.data)
+        setLoading(false)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }, [])
 
     
@@ -108,45 +102,7 @@ useEffect(() => {
             <div className="container py-5">
                 <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
                 <OwlCarousel className='owl-theme' loop margin={10} nav>
-                    {/* <div className="item ">
-                        <div className="card">
-                            <img src={require("../assets/desainLogo.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Desain Logo</h5>
-                                <p className="card-text">Buat Logo khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/voiceActor.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Voice Actor</h5>
-                                <p className="card-text">Buat suara video khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/fotografi.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Fotografi</h5>
-                                <p className="card-text">Buat Foto khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <div className="card">
-                            <img src={require("../assets/mediaSosial.png")} className="d-block w-100" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title fw-semibold">Kreatif Sosial Media</h5>
-                                <p className="card-text">Buat konten sosmed khusus untuk dirimu berdasarkan pekerjaan para profesional</p>
-                            </div>
-                        </div>
-                    </div> */}
-
                     {loading && "Loading..."}
-
     {!!data && data.length > 0 ? data.map((product) => {
                         return(
                             <div className="item" key={product.id}>
@@ -160,12 +116,9 @@ useEffect(() => {
                             </div>)
     
         }):(<p>API did not provided any product, try again.</p>)
-    }
-        
-                            
+    }                       
                 </OwlCarousel> 
             </div>
-
         </div>
 
         <div className="container-fluid keynote">
