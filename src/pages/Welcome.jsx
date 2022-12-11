@@ -8,6 +8,9 @@ import NavBar0 from '../components/NavBar0';
 import Footer from '../components/Footer';
 import PopLogin from '../components/PopLogin';
 import PopRegister from '../components/PopRegister';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND;
@@ -21,6 +24,41 @@ const navigate = useNavigate()
 
 const [loading, setLoading] = useState(false)
 const [data, setData] = useState(null)
+
+const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
 useEffect(() => {
     setLoading(true)
@@ -97,24 +135,29 @@ return (
         <div className="container py-5">
             <h1 className='fw-semibold pb-5' style={{fontSize:"41px"}}>Layanan Populer</h1>
             {loading && "Loading..."}
+
+            <Slider {...settings}>
+                {!!data && data.length > 0 
+                ? data.map((product) => {
+                    return(
+                    <div key={product.id}>
+                        <div className="card">
+                            <img src={product.images[0]} className="d-block w-100" alt="product"/>
+                            <div className="card-body">
+                                <h5 className="card-title fw-semibold">{product.title}</h5>
+                                <p className="card-text">{product.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                    )   
+                    })
+                : (<p>API did not provided any product, try again.</p>)    
+                } 
+
+            </Slider>
+
+
       
-            {!!data && data.length > 0 ? data.map((product) => {
-                return(
-                    <article key={product.id}>
-                    <h2>title: {product.title}</h2>
-                    <p>id: {product.id}</p>
-                    <p>description: {product.description}</p>
-                    <p>price: {product.price}</p>
-                    <img src={product.images[0]} alt="..."></img>
-                    <img src={product.images[1]} alt="..."></img>
-                    <img src={product.images[2]} alt="..."></img>
-                    <h3>category name: {product.category.name}</h3>
-                    <p>category id: {product.category.name}</p>
-                    <p>category image: </p> <img src={product.category.image} alt='category' />
-                    </article>)
-                    
-                }):(<p>API did not provided any product, try again.</p>)
-            } 
             
 
         </div>
