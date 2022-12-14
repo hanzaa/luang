@@ -20,7 +20,7 @@ const PopLogin = (props) => {
           })
   
           // simpan 'token' dan 'user' ke localStorage
-          localStorage.setItem('id',response.data.id)
+          localStorage.setItem('id',response.data.userid)
           localStorage.setItem('username',response.data.username)
           localStorage.setItem('email',response.data.email)
           localStorage.setItem('token',response.data.token)
