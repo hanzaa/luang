@@ -54,12 +54,12 @@ const NavBar = () => {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link fw-semibold" to='/home' style={{fontSize:"20px",color:"#7C8DB0"}}>Pesanan</Link>
+                    <Link className="nav-link fw-semibold" to='/pesanan' style={{fontSize:"20px",color:"#7C8DB0"}}>Pesanan</Link>
                 </li> 
                 <li className="nav-item dropdown me-5">
                     <img className="rounded-circle nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" src={require("../assets/pp.jpg")} width="65rem"  alt='...'/>
                     <ul className="dropdown-menu">
-                        <li><Link className="dropdown-item" to="/">Action</Link></li>
+                        <li><Link className="dropdown-item" to="/account">Account</Link></li>
                         <li><Link className="dropdown-item" to="/">Another action</Link></li>
                         <li><hr className="dropdown-divider"/></li>
                         <li><button type="button" className="dropdown-item text-danger" onClick={handleLogout}>Log Out</button></li>
