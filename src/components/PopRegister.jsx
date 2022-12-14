@@ -13,9 +13,7 @@ const PopRegister = (props) => {
         confirmPassword:''
     })
 
-
     const handleSubmit = async (event) => {
-        event.target.confirmPassword.setCustomValidity("")
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
@@ -47,9 +45,7 @@ const PopRegister = (props) => {
               // jika gagal, tampilkan alert 'Register Gagal'
               alert(error.response.data)  
             }
-          }
-
-      
+          }    
     };
 
       
