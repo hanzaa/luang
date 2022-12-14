@@ -189,38 +189,6 @@ return (
             </div>
         </div>
     </div>
-    <div className="container-fluid footer">
-        <div className="container">
-            <div className="row pb-5">
-                <div className="col">
-                    <h5>Kategori</h5>
-                    <h3>Grafis & Desain</h3>
-                    <h3>Digital Marketing</h3>
-                    <h3>Video & Animasi</h3>
-                    <h3>Musik & Audio</h3>
-                    <h3>Programming & Teknologi</h3>
-                    <h3>Data</h3>
-                    <h3>Bisnis</h3>
-                    <h3>Fotografi</h3>
-                </div>
-                <div className="col">
-                    <h5>Tentang</h5>
-                    <h3>Kebijakan Privasi</h3>
-                    <h3>Terms of Service</h3>
-                </div>
-                <div className="col">
-                    <h5>Dukungan</h5>
-                    <h3>Bantuan & Dukungan</h3>
-                    <h3>Kepercayaan & Keamanan</h3>
-                </div>
-                <div className="col">
-                    <h5>Komunitas</h5>
-                    <h3>Event</h3>
-                    <h3>Forum</h3>
-                </div>
-            </div>
-        </div>
-    </div>
     <Footer/>
 
     </>
