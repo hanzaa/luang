@@ -2,15 +2,26 @@
     background-color: rgba(141, 52, 255, 1);
     font-family: Poppins;
     border:1px solid black;
-  }
+}
+.btn-secondary:hover{
+    background-color: rgb(108, 0, 246);
+}
+.btn-outline-secondary {
+    font-family: Poppins;
+    color : rgba(141, 52, 255, 1);
+    border:1px solid rgba(141, 52, 255, 1);
+}
+.btn-outline-secondary:hover{
+    background-color: rgb(108, 0, 246);
+}
+.btn-outline-secondary:active{
+    background-color: rgb(152, 83, 242);
+}
 .btn-search{
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
 
-.btn-secondary:hover{
-    background-color: rgb(108, 0, 246);
-}
 
 .form-control{
     border:1px solid black;
