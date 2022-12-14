@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PopPesan = (props) => {
     const [jumlah,setJumlah]= useState(1)
+    const navigate = useNavigate()
 
     const tambahJumlah = () =>{
         setJumlah((prev) => prev + 1)
     }
     const kurangiJumlah = () =>{
-        if(jumlah > 0){
+        if(jumlah > 1){
             setJumlah((prev) => prev - 1)
         }
     }
@@ -25,6 +27,7 @@ const PopPesan = (props) => {
                     onClick={()=> props.popPesan(false)} >X</div>
                 </div>
             </div>
+            
 
             <div className="row  m-3 p-1" style={{border:"solid black 1px",borderRadius:"8px"}}>
                 <div className="row mt-2 mb-3">
@@ -45,6 +48,8 @@ const PopPesan = (props) => {
                         style={{ fontSize:'12px', borderColor:"#8D34FF", backgroundColor:"transparent", color:"green"}}>+</button>
                     </div>
                 </div>
+
+
                 <div className="row mt-5 mb-2">
                     <div className="col fw-bold" style={{fontSize:"24px"}}>Total</div>
                     <div className="col" style={{fontSize:"24px"}}>Rp{props.price * jumlah}</div>
@@ -52,8 +57,8 @@ const PopPesan = (props) => {
             </div>
 
             <div className="row px-3">
-                <button type="button" className="btn btn-secondary fw-bold" 
-                style={{letterSpacing:"1px", fontSize:"16px"}}>Lanjut</button>
+                <button type="button" className="btn btn-secondary fw-bold" onClick={()=>navigate('/pesanan')}
+                style={{letterSpacing:"1px", fontSize:"16px"}}>Pesan</button>
             </div>
         </div>
     </div>
