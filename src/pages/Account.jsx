@@ -112,17 +112,37 @@ const Account = () => {
         }else if(OTPInput===''){
             alert("Input your OTP code first!")
         }else{
-            axios.post(`${base_url}/ubah`,{
-                token : OTPInput,
-                username:newUsername,
-                password:passwordInput.password
-            })
-            .then((res)=>{
-                alert(res.data)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
+            try {
+                //Melakukan Axios POST ke backend pada endpoint /ubah
+                
+                const response = await axios.post(`${base_url}/ubah`, {
+                    token : OTPInput,
+                    username:newUsername,
+                    password:passwordInput.password
+                })
+
+                alert("Data Berhasil Diubah")
+                setChangeUsername(false)
+                setChangePass(false)
+                console.log(response)
+
+                //menghapus data local storage lama
+                localStorage.removeItem('id');
+                localStorage.removeItem('username');
+                localStorage.removeItem('email');
+                localStorage.removeItem('token');
+        
+                // simpan data baru ke localStorage
+                localStorage.setItem('id',response.data.userid)
+                localStorage.setItem('username',response.data.username)
+                localStorage.setItem('email',response.data.email)
+                localStorage.setItem('token',response.data.token)                
+      
+                
+              } catch (error) {
+                // jika gagal, tampilkan alert 'Login Gagal'
+                alert(error.response.data.error);
+              }
         }
     }
 
@@ -131,21 +151,21 @@ const Account = () => {
         if(OTPInput===''){
             alert("Input your OTP Code Before Proceed to Delete Your Account")
         }else{
-            // axios.post(`${base_url}/hapus`,{
-            //     token : OTPInput,
-            // })
-            // .then((res)=>{
-            //     localStorage.removeItem('id');
-            //     localStorage.removeItem('username');
-            //     localStorage.removeItem('email');
-            //     localStorage.removeItem('token');
-            //     alert(res.data)
-            //     navigate('/')
-            // })
-            // .catch(err=>{
-            //     console.log(err)
-            // })
-            navigate('/')
+            axios.post(`${base_url}/hapus`,{
+                token : OTPInput,
+            })
+            .then((res)=>{
+                alert(res.data)
+                localStorage.removeItem('id');
+                localStorage.removeItem('username');
+                localStorage.removeItem('email');
+                localStorage.removeItem('token');
+                navigate('/')
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+            
         }
     }
     
