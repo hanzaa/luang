@@ -10,7 +10,6 @@ const PopLogin = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-  
         try {
           //Melakukan Axios POST ke backend pada endpoint /login
           
@@ -18,6 +17,8 @@ const PopLogin = (props) => {
             email: data.get('email'),
             password: data.get('password')
           })
+
+          console.log(response)
   
           // simpan 'token' dan 'user' ke localStorage
           localStorage.setItem('id',response.data.userid)
@@ -57,7 +58,7 @@ const PopLogin = (props) => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control w-100" name="password" placeholder="Password" />
                 </div>
-                <button type="submit" className="btn btn-primary w-100 fw-bold" style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
+                <button type="submit" className="btn btn-secondary w-100 fw-bold" style={{fontSize:"22px"}}>lanjut</button>
                 <p className='fw-light d-flex justify-content-center pt-5'>Belum punya akun? .<span className='link-danger' onClick={()=> {props.popLogin(false) ;props.popRegister(true)}}>daftar</span> .</p>
             </form>
         </div>

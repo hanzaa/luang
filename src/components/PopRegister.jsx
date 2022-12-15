@@ -16,6 +16,11 @@ const PopRegister = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        console.log({
+            username: data.get('username'),
+            email: data.get('email'),
+            password: data.get('password')
+        })
 
         if(data.get('email')==='' || data.get('username')===' ' || data.get('password') ==='' ||  data.get('confirmPassword')===''){
             alert('Fill All The Form First!')
@@ -143,7 +148,7 @@ const PopRegister = (props) => {
                     <p className="text-danger">{confirmPasswordError}</p>
                 </div>
                 <button type="submit" className="btn btn-primary w-100 fw-bold" 
-                style={{background:"#FF0000",fontSize:"23px"}}>lanjut</button>
+                style={{background:"#FF0000",fontSize:"23px"}}>Daftar</button>
                 <p className='fw-light d-flex justify-content-center pt-1'>Sudah punya akun? .<span className='link-danger' onClick={()=> {props.popLogin(true) ;props.popRegister(false)}}>masuk</span> .</p>
             </form>
         </div>
