@@ -40,7 +40,7 @@ const BecomeSeller = () => {
             </div>
         </div>
    
-        <Footer/>
+    <Footer/>
 
     </> );
 }
