@@ -6,6 +6,7 @@ import BecomeSeller from "./pages/BecomeSeller";
 import Fake from "./pages/Fake";
 import Pesanan from "./pages/Pesanan";
 import Account from "./pages/Account";
+import Category from "./pages/Category";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Welcome/>}></Route>
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/account' element={<Account/>}></Route>
+        <Route path='/category' element={<Category/>}></Route>
         <Route path='/product/:id' element={<Product/>}></Route>
         <Route path='/pesanan' element={<Pesanan/>}></Route>
         <Route path='/becomeseller' element={<BecomeSeller/>}></Route>
