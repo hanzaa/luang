@@ -119,7 +119,7 @@ const Account = () => {
                     username: newUsername,
                     password: passwordInput.password
                 })
-
+                
                 alert("Data Berhasil Diubah")
                 setChangeUsername(false)
                 setChangePass(false)
