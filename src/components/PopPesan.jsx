@@ -17,7 +17,7 @@ const PopPesan = (props) => {
 
     return ( <>
     <div className="pop d-flex align-items-start justify-content-end" style={{ background: "rgba(0,0,0,0.7)"}}>
-        <div className="container login m-5 p-2 ">
+        <div className="container login m-5 p-3 ">
             <div className="row px-3 pt-2" style={{borderBottom: "1px solid black"}} >
                 <div className="col-10">
                     <h3 className="fw-bold" style={{fontSize:"20px"}}>Pilihan Pesanan</h3>
@@ -31,7 +31,7 @@ const PopPesan = (props) => {
 
             <div className="row  m-3 p-1" style={{border:"solid black 1px",borderRadius:"8px"}}>
                 <div className="row mt-2 mb-3">
-                    <div className="col fw-bold" style={{fontSize:"24px"}}>Biasa</div>
+                    <div className="col fw-bold" style={{fontSize:"24px"}}>{props.type}</div>
                     <div className="col" style={{fontSize:"24px"}}>Rp{props.price}</div>
                 </div>
                 <div className="row d-flex align-items-center">
@@ -52,7 +52,7 @@ const PopPesan = (props) => {
 
                 <div className="row mt-5 mb-2">
                     <div className="col fw-bold" style={{fontSize:"24px"}}>Total</div>
-                    <div className="col" style={{fontSize:"24px"}}>Rp{props.price * jumlah}</div>
+                    <div className="col" style={{fontSize:"24px"}}>Rp{props.price * jumlah}k</div>
                 </div>
             </div>
 
