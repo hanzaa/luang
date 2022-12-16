@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -13,6 +14,7 @@ const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Category = () => {
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const settings = {
         dots: true,
