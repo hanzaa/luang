@@ -141,27 +141,12 @@ const Home = () => {
                 ? categories.map((category)=>{
                   return(
                     <div key={category.categoryid}>
-                      <h1 className='pt-4 ps-4 fw-bold '>{category.category}</h1>
-                      <div className='p-4'>
-                        <Slider {...settings } slidesToScroll={3} slidesToShow={3} 
-                        className="slick-prev:before slick-next:before" style={{color:"white"}}>
-                          {!!data && data.length > 0
-                          ? data.map((product) => {
-                            return(
-                          <div key={product.id}>
-                              <div className="card"  onClick={()=>{navigate(`/product/${product.id}`)}}>
-                                  <img src={product.images[0]} className="d-block w-100" alt="product"/>
-                                  <div className="card-body">
-                                      <h5 className="card-title fw-semibold">{product.title}</h5>
-                                      <p className="card-text">{product.description}</p>
-                                  </div>
-                              </div>
-                          </div>
-                            )})
-                          :null
-                          }
-                                              
-                        </Slider>
+                      <div class="carousel-item carousel-item:before d-flex align-items-center" >
+                        <img src={category.image} alt="category" class="d-block w-100 opacity-75" style={{background:"black"}}/>
+                        <div class="carousel-caption d-none d-md-block mb-5" >
+                          <h1 className='pt-4 ps-4 fw-bold mb-5 ' style={{fontSize:"6rem",textShadow:"2px 2px 2px black"}}>{category.category}</h1>
+                          <h1 className='mb-4' style={{fontSize:"1px"}}>.</h1>
+                        </div>
                       </div>
                     </div>
                   
