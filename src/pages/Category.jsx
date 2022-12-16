@@ -12,7 +12,6 @@ import Slider from 'react-slick';
 const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Category = () => {
-    const [categories, setCategories] =useState([])
     const [loading, setLoading] = useState(false)
 
     const settings = {
@@ -50,6 +49,7 @@ const Category = () => {
         ]
     }
     
+    const [categories, setCategories] =useState([])
     useEffect(() => {
         setLoading(true)
         axios.get(`${base_url}/getcategory`)  
@@ -62,6 +62,20 @@ const Category = () => {
             console.log(err)
         })
     }, [])
+
+    const [data, setData] = useState([])
+    useEffect(() => {
+      setLoading(true)
+      axios.get(`https://api.escuelajs.co/api/v1/products?offset=12&limit=24`)  
+      .then((res) => {
+          console.log(res)
+          setData(res.data)
+          setLoading(false)
+      })
+      .catch(err => {
+          console.log(err)
+      })
+  }, [])
 
     return ( <>
         <NavBar/>
@@ -76,18 +90,31 @@ const Category = () => {
             return(
                 <div key={category.categoryid} className="container bg-danger m-5" style={{border:"solid black 1px", borderRadius:"8px"}}>
                     <div className="row" >
-                        <h1>{category.category}</h1>
+                        <h1 className="text-white fw-bold mt-4 ms-4">{category.category}</h1>
                         <div className='p-5'>
-                            <Slider {...settings } dots={false} slidesToScroll={3} slidesToShow={3}>
-                            <h1>1</h1>
-                            <h1>2</h1>
-                            <h1>3</h1>
-                            <h1>4</h1>
-                            </Slider>
+                          <Slider {...settings}>
+                              {!!data && data.length > 0 
+                              ? data.map((product) => {
+                                  return(
+                                  <div key={product.id}>
+                                      <div className="card"  onClick={()=>{navigate(`/product/${product.id}`)}}>
+                                          <img src={product.images[0]} className="d-block w-100" alt="product"/>
+                                          <div className="card-body">
+                                              <h5 className="card-title fw-semibold">{product.title}</h5>
+                                              <p className="card-text">{product.description}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  )   
+                                  })
+                              : (<p>API did not provided any product, try again.</p>)    
+                              } 
+                          </Slider>
                         </div>
                         
                     </div>
                 </div>
+                
             )})
         :null
         }
