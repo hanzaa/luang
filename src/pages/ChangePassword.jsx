@@ -5,7 +5,6 @@ import { useNavigate,Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import PopOTP from "../components/PopOTP";
-import { Button } from "bootstrap";
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND;
