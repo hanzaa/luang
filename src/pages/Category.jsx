@@ -24,6 +24,7 @@ const Category = () => {
                     token: token
                 })
                 if (response.status === 200) {
+                    // eslint-disable-next-line
                     null
                 } else {
                     navigate('/')
