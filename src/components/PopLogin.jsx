@@ -1,11 +1,14 @@
 import './PopLogin.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 //mengambil link API backend dari environement variable
 const base_url = process.env.REACT_APP_URL_BACKEND
 
 
 const PopLogin = (props) => {
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,6 +39,7 @@ const PopLogin = (props) => {
         } catch (error) {
           // jika gagal, tampilkan alert 'Login Gagal'
           alert(error.response.data.error);
+          console.log(error)
         }
       };
     
@@ -59,6 +63,8 @@ const PopLogin = (props) => {
                     <input type="password" className="form-control w-100" name="password" placeholder="Password" />
                 </div>
                 <button type="submit" className="btn btn-secondary w-100 fw-bold" style={{fontSize:"22px"}}>lanjut</button>
+                <span className='fw-light' style={{fontSize:"1px"}}>.</span>
+                <span className='link-danger d-flex justify-content-center fw-light' onClick={()=>{navigate('/forget')}}>lupa password?</span>
                 <p className='fw-light d-flex justify-content-center pt-5'>Belum punya akun? .<span className='link-danger' onClick={()=> {props.popLogin(false) ;props.popRegister(true)}}>daftar</span> .</p>
             </form>
         </div>
