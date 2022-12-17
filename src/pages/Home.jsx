@@ -16,6 +16,32 @@ const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Home = () => {
 
+  useEffect(()=>{
+    const token=localStorage.getItem('token')
+    const verify = async() =>{
+        try {
+          const response = await axios.post(`${base_url}/verify`, {
+          token: token
+          })
+          if(response.status === 200){
+            null
+          }else{
+            navigate('/')
+          }
+        } catch (error) {
+          console.log(error)
+          navigate('/')
+        }
+        }
+        
+        if(token){
+            verify()
+        }else{
+          navigate('/')
+        }  
+// eslint-disable-next-line
+}, [])
+
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [categories, setCategories] =useState([])
@@ -142,7 +168,7 @@ const Home = () => {
                   return(
                     <div key={category.categoryid}>
                       <div class="carousel-item carousel-item:before d-flex align-items-center" >
-                        <img src={category.image} alt="category" class="d-block w-100 opacity-75" style={{background:"black"}}/>
+                        <img src= {category.image_category} alt="category" class="d-block w-100 opacity-75" style={{background:"black"}}/>
                         <div class="carousel-caption d-none d-md-block mb-5" >
                           <h1 className='pt-4 ps-4 fw-bold mb-5 ' style={{fontSize:"6rem",textShadow:"2px 2px 2px black"}}>{category.category}</h1>
                           <h1 className='mb-4' style={{fontSize:"1px"}}>.</h1>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
@@ -11,6 +11,32 @@ const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Account = () => {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const verify = async () => {
+            try {
+                const response = await axios.post(`${base_url}/verify`, {
+                    token: token
+                })
+                if (response.status === 200) {
+                    null
+                } else {
+                    navigate('/')
+                }
+            } catch (error) {
+                console.log(error)
+                navigate('/')
+            }
+        }
+
+        if (token) {
+            verify()
+        } else {
+            navigate('/')
+        }
+        // eslint-disable-next-line
+    }, [])
 
     const [changeUsername, setChangeUsername] = useState(false)
     const [newUsername, setNewUsername] = useState(localStorage.getItem('username'))
@@ -119,7 +145,7 @@ const Account = () => {
                     username: newUsername,
                     password: passwordInput.password
                 })
-                
+
                 alert("Data Berhasil Diubah")
                 setChangeUsername(false)
                 setChangePass(false)

@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 
 import './Product.css';
 import NavBar from "../components/NavBar";
@@ -11,6 +11,35 @@ import PopPesan from "../components/PopPesan";
 const base_url = process.env.REACT_APP_URL_BACKEND;
 
 const Product = () => {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const verify = async () => {
+            try {
+                const response = await axios.post(`${base_url}/verify`, {
+                    token: token
+                })
+                if (response.status === 200) {
+                    null
+                } else {
+                    navigate('/')
+                }
+            } catch (error) {
+                console.log(error)
+                navigate('/')
+            }
+        }
+
+        if (token) {
+            verify()
+        } else {
+            navigate('/')
+        }
+        // eslint-disable-next-line
+    }, [])
+
     const [biasa,setBiasa] = useState(true)
     const [spesial,setSpesial] = useState(false)
     const [ekstrim,setEkstrim] = useState(false)

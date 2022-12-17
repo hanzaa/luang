@@ -16,6 +16,32 @@ const Category = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const verify = async () => {
+            try {
+                const response = await axios.post(`${base_url}/verify`, {
+                    token: token
+                })
+                if (response.status === 200) {
+                    null
+                } else {
+                    navigate('/')
+                }
+            } catch (error) {
+                console.log(error)
+                navigate('/')
+            }
+        }
+
+        if (token) {
+            verify()
+        } else {
+            navigate('/')
+        }
+        // eslint-disable-next-line
+    }, [])
+
     const settings = {
         dots: true,
         infinite: false,
