@@ -60,7 +60,6 @@ const NavBar = () => {
                     <img className="rounded-circle nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" src={require("../assets/pp.jpg")} width="65rem"  alt='...'/>
                     <ul className="dropdown-menu">
                         <li><Link className="dropdown-item" to="/account">Account</Link></li>
-                        <li><Link className="dropdown-item" to="/">Another action</Link></li>
                         <li><hr className="dropdown-divider"/></li>
                         <li><button type="button" className="dropdown-item text-danger" onClick={handleLogout}>Log Out</button></li>
                     </ul>
