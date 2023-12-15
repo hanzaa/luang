@@ -142,7 +142,7 @@ return (
                             <img src={product.images[0]} className="d-block w-100" alt="product"/>
                             <div className="card-body">
                                 <h5 className="card-title fw-semibold">{product.title}</h5>
-                                <p className="card-text">{product.description}</p>
+                                <p className="card-text truncate-3-lines">{product.description}</p>
                             </div>
                         </div>
                     </div>

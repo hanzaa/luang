@@ -8,6 +8,14 @@
     background-image: linear-gradient(244.14deg, rgba(141, 52, 255, 0.72) 3.16%, rgba(255, 0, 0, 0.07) 97.98%);
 }
 
+.truncate-3-lines{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .slogan h3{
     font-size: 30px;
     font-weight: bold;
