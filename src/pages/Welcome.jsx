@@ -63,9 +63,8 @@ const settings = {
 
 useEffect(() => {
     setLoading(true)
-    axios.get(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)  
+    axios.get(`https://api.escuelajs.co/api/v1/products?limit=12&offset=0`)  
     .then((res) => {
-        console.log(res)
         setData(res.data)
         setLoading(false)
     })
@@ -98,8 +97,6 @@ useEffect(()=>{
     
 // eslint-disable-next-line
 }, [isLogin])
-
-
 
 return (
     <>
